@@ -21,7 +21,8 @@ function init() {
 	chessBoard = new THREE.Object3D(); //group node
 
 	var loader = new THREE.OBJMTLLoader(); //chess board files here, you could easily rename them
-	loader.load( '/objects/chessboard.obj', 'objects/chessboard.mtl', function ( object ) {
+	//loader.load( '/objects/chessboard.obj', 'objects/chessboard.mtl', function ( object ) {
+	loader.load( '/objects/4square.obj', 'objects/4square.mtl', function ( object ) {
 		object.scale.x = 20;
 		object.scale.y = 20;
 		object.scale.z = 20;
