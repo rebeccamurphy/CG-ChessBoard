@@ -21,8 +21,8 @@ function init() {
 	chessBoard = new THREE.Object3D(); //group node
 
 	var loader = new THREE.OBJMTLLoader(); //chess board files here, you could easily rename them
-	//loader.load( '/objects/chessboard.obj', 'objects/chessboard.mtl', function ( object ) {
-	loader.load( '/objects/4square.obj', 'objects/4square.mtl', function ( object ) {
+	loader.load( '/objects/chessboard.obj', '/objects/chessboard.mtl', function ( object ) {
+	//loader.load( '/objects/4square.obj', '/objects/4square.mtl', function ( object ) {
 		object.scale.x = 20;
 		object.scale.y = 20;
 		object.scale.z = 20;
@@ -94,4 +94,53 @@ function render() {
 	camera.lookAt( scene.position );
 	renderer.render( scene, camera );
 
+}
+
+function initMeow2(){
+	container = document.createElement( 'div' );
+	document.body.appendChild( container );
+	camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 2000 );
+	camera.position.z = 100;
+			
+	scene = new THREE.Scene();
+	
+	var ambient = new THREE.AmbientLight( 0x101010 );
+	scene.add( ambient );
+
+	var directionalLight = new THREE.DirectionalLight( 0xffeedd );
+	directionalLight.position.set( 0.5, 2, 1 ).normalize();
+	scene.add( directionalLight );
+	
+	renderer = new THREE.WebGLRenderer();
+	renderer.setSize( window.innerWidth, window.innerHeight );
+	container.appendChild( renderer.domElement );
+	
+	var loader  = new THREE.JSONLoader();
+	//jsonLoader2.load( "objects/chessboard.js");
+	// loader.load({
+		// model: "objects/chessboard.json",
+		// callback: function(geometry) {
+			// mesh = new THREE.Mesh(geometry,new THREE.MeshFaceMaterial);
+			// mesh.position.set(0,0,0);
+			// mesh.scale.set(20,20,20);
+			// scene.add(mesh);
+			// renderer.render(scene, camera);
+		// }
+	// });
+	loader.load( 'objects/chessboard.js', function ( geometry, materials ) {
+		var material1 = materials[ 0 ]; //black
+		var material2 = materials[ 1 ]; //white
+		
+		//var materialArray
+		//var vertexColorMaterial = new THREE.MeshBasicMaterial( { vertexColors: THREE.VertexColors } );
+		mesh = new THREE.Mesh( geometry, new THREE.MeshFaceMaterial( materials ) );
+		mesh.scale.set(5,5,5);
+		scene.add( mesh );
+	} );
+	
+	document.addEventListener( 'mousemove', onDocumentMouseMove, false );
+
+	window.addEventListener( 'resize', onWindowResize, false );
+	
+	
 }
