@@ -128,7 +128,7 @@ function initMeow2(){
 		// }
 	// });
 	//loader.load( 'objects/chessboard.js', function ( geometry, materials ) {
-	loader.load( 'objects/fullBoardJPEG.js', function ( geometry, materials ) {
+	loader.load( 'objects/untitled.js', function ( geometry, materials ) {
 		//var material1 = materials[ 0 ]; //black
 		//var material2 = materials[ 1 ]; //white
 		
@@ -145,7 +145,7 @@ function initMeow2(){
 		mesh = new THREE.Mesh( geometry,new THREE.MeshFaceMaterial( materials) );
 		mesh.scale.set(5,5,5);
 		scene.add( mesh );
-	} );
+	});
 	
 	document.addEventListener( 'mousemove', onDocumentMouseMove, false );
 
@@ -184,4 +184,40 @@ function initDae(){
 	window.addEventListener( 'resize', onWindowResize, false );
 	
 });
+}
+function addObjects() {
+	container = document.createElement( 'div' );
+	document.body.appendChild( container );
+	camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 2000 );
+	camera.position.z = 100;
+			
+	scene = new THREE.Scene();
+	
+	var ambient = new THREE.AmbientLight( 0x101010 );
+	scene.add( ambient );
+
+	var directionalLight = new THREE.DirectionalLight( 0xffeedd );
+	directionalLight.position.set( 0.5, 2, 1 ).normalize();
+	scene.add( directionalLight );
+	
+	renderer = new THREE.WebGLRenderer();
+	renderer.setSize( window.innerWidth, window.innerHeight );
+	container.appendChild( renderer.domElement );
+
+var material = new THREE.MeshBasicMaterial( { map: THREE.ImageUtils.loadTexture( 'objects/marble.jpg' ) } );
+var loader = new THREE.JSONLoader();
+loader.load( { model: 'objects/fullBoardJPEG.js', callback: function ( geometry ) {
+      geometry.computeTangents();
+      mesh = new THREE.Mesh( geometry, material );
+      mesh.position.x = mesh.position.y = mesh.position.z = 0;
+      mesh.rotation.x = mesh.rotation.y = mesh.rotation.z = 0;
+      mesh.scale.x = mesh.scale.y = mesh.scale.z = 700;
+      mesh.matrixAutoUpdate = false;
+      mesh.updateMatrix();
+     scene.add( mesh );
+  } } );
+ document.addEventListener( 'mousemove', onDocumentMouseMove, false );
+
+	window.addEventListener( 'resize', onWindowResize, false );
+  // Finally when we are done loading our objects we need to add the group to the scene.
 }
