@@ -128,7 +128,7 @@ function initMeow2(){
 		// }
 	// });
 	//loader.load( 'objects/chessboard.js', function ( geometry, materials ) {
-	loader.load( 'objects/single.js', function ( geometry, materials ) {
+	loader.load( 'objects/fullBoardJPEG.js', function ( geometry, materials ) {
 		//var material1 = materials[ 0 ]; //black
 		//var material2 = materials[ 1 ]; //white
 		
@@ -142,7 +142,7 @@ function initMeow2(){
     	colorSpecular: [0.8999999761581421, 0.8999999761581421, 0.8999999761581421]
   		});
 		*/
-		mesh = new THREE.Mesh( geometry, materials );
+		mesh = new THREE.Mesh( geometry,new THREE.MeshFaceMaterial( materials) );
 		mesh.scale.set(5,5,5);
 		scene.add( mesh );
 	} );
