@@ -127,13 +127,22 @@ function initMeow2(){
 			// renderer.render(scene, camera);
 		// }
 	// });
-	loader.load( 'objects/chessboard.js', function ( geometry, materials ) {
-		var material1 = materials[ 0 ]; //black
-		var material2 = materials[ 1 ]; //white
+	//loader.load( 'objects/chessboard.js', function ( geometry, materials ) {
+	loader.load( 'objects/single.js', function ( geometry, materials ) {
+		//var material1 = materials[ 0 ]; //black
+		//var material2 = materials[ 1 ]; //white
 		
 		//var materialArray
 		//var vertexColorMaterial = new THREE.MeshBasicMaterial( { vertexColors: THREE.VertexColors } );
-		mesh = new THREE.Mesh( geometry, new THREE.MeshFaceMaterial( materials ) );
+		/*
+		var material = new THREE.MeshLambertMaterial({
+    	map: THREE.ImageUtils.loadTexture('objects/marble.jpeg' ),  // specify and load the texture
+    	colorAmbient: [0.480000026226044, 0.480000026226044, 0.480000026226044],
+    	colorDiffuse: [0.480000026226044, 0.480000026226044, 0.480000026226044],
+    	colorSpecular: [0.8999999761581421, 0.8999999761581421, 0.8999999761581421]
+  		});
+		*/
+		mesh = new THREE.Mesh( geometry, materials );
 		mesh.scale.set(5,5,5);
 		scene.add( mesh );
 	} );
@@ -143,4 +152,36 @@ function initMeow2(){
 	window.addEventListener( 'resize', onWindowResize, false );
 	
 	
+}
+
+function initDae(){
+	container = document.createElement( 'div' );
+	document.body.appendChild( container );
+	camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 2000 );
+	camera.position.z = 100;
+			
+	scene = new THREE.Scene();
+	
+	var ambient = new THREE.AmbientLight( 0x101010 );
+	scene.add( ambient );
+
+	var directionalLight = new THREE.DirectionalLight( 0xffeedd );
+	directionalLight.position.set( 0.5, 2, 1 ).normalize();
+	scene.add( directionalLight );
+	
+	renderer = new THREE.WebGLRenderer();
+	renderer.setSize( window.innerWidth, window.innerHeight );
+	container.appendChild( renderer.domElement );
+
+	loader = new THREE.ColladaLoader();
+	loader.load('objects/fullBoard.dae',function colladaReady( collada ){
+	player = collada.scene;
+	skin = collada.skins [ 0 ];
+	scene.add( player );
+
+	document.addEventListener( 'mousemove', onDocumentMouseMove, false );
+
+	window.addEventListener( 'resize', onWindowResize, false );
+	
+});
 }
