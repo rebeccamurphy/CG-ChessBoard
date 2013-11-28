@@ -100,7 +100,7 @@ function initMeow2(){
 	container = document.createElement( 'div' );
 	document.body.appendChild( container );
 	camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 2000 );
-	camera.position.z = 100;
+	camera.position.z = 50;
 			
 	scene = new THREE.Scene();
 	
