@@ -32,14 +32,13 @@
 		<script src="js/loaders/MTLLoader.js"></script>
 		<script src="js/loaders/OBJLoader.js"></script>
 		<script src="js/loaders/OBJMTLLoader.js"></script>
-		<script src="js/loaders/ColladaLoader.js"></script>
 
 		<script src="js/Detector.js"></script>
 		<script src="js/stats.min.js"></script>
+		<script src="js/SubdivisionModifier.js"></script>
 		<script src="js/initBoard.js"></script>
 
 		<script>
-
 			var container, stats;
 
 			var camera, scene, renderer;
@@ -51,9 +50,8 @@
 			var windowHalfX = window.innerWidth / 2;
 			var windowHalfY = window.innerHeight / 2;
 			
-			initMeow2();
-			//initDae();
-			//addObjects();
+
+			init();
 			animate();
 			
 
