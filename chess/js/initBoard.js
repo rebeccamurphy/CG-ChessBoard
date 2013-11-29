@@ -26,7 +26,23 @@ function init() {
 		board = object;
 		chessBoard.add( board );
 	} );
-
+	
+	initMeow2('objects/queen.json', -10, 30);
+	initMeow2('objects/king.json', 0, 30);
+	initMeow2('objects/rook.json', -40, 30);
+	initMeow2('objects/rook.json', 30, 30);
+	initMeow2('objects/bishop.json', -20, 30);
+	initMeow2('objects/bishop.json', 10, 30);
+	initMeow2('objects/knight.json', -30, 30);
+	initMeow2('objects/knight.json', 20, 30);
+	
+	var pawnLocal = -40;
+	for(var i = 0; i < 8; i++)
+	{
+		initMeow2('objects/pawn.json', pawnLocal, 20);
+		pawnLocal += 10;
+	}
+	
 	scene.add( chessBoard );
 
 	renderer = new THREE.WebGLRenderer();
@@ -93,41 +109,11 @@ function render() {
 
 }
 
-function initMeow2(){
-	container = document.createElement( 'div' );
-	document.body.appendChild( container );
-	camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 2000 );
-	camera.position.z = 100;
-			
-	scene = new THREE.Scene();
-	
-	var ambient = new THREE.AmbientLight( 0x101010 );
-	scene.add( ambient );
-
-	var directionalLight = new THREE.DirectionalLight( 0xffeedd );
-	directionalLight.position.set( 0.5, 2, 1 ).normalize();
-	scene.add( directionalLight );
-	
-	renderer = new THREE.WebGLRenderer();
-	renderer.setSize( window.innerWidth, window.innerHeight );
-	container.appendChild( renderer.domElement );
+function initMeow2(objString, x, z){
 	
 	var loader  = new THREE.JSONLoader();
-	//jsonLoader2.load( "objects/chessboard.js");
-	// loader.load({
-		// model: "objects/chessboard.json",
-		// callback: function(geometry) {
-			// mesh = new THREE.Mesh(geometry,new THREE.MeshFaceMaterial);
-			// mesh.position.set(0,0,0);
-			// mesh.scale.set(20,20,20);
-			// scene.add(mesh);
-			// renderer.render(scene, camera);
-		// }
-	// });
-	loader.load( 'objects/chessboard.json', function ( geometry, materials, divisions ) {
-		var material1 = materials[ 0 ]; //black
-		var material2 = materials[ 1 ]; //white
-		
+
+	loader.load( objString, function ( geometry, materials, divisions ) {
 		// First we want to clone our original geometry.
 		// Just in case we want to get the low poly version back.
 		var smooth = geometry.clone( geometry );
@@ -136,7 +122,7 @@ function initMeow2(){
 		smooth.mergeVertices();
 
 		// Create a new instance of the modifier and pass the number of divisions.
-		var modifier = new THREE.SubdivisionModifier(divisions * 2);
+		var modifier = new THREE.SubdivisionModifier(divisions * 4);
 
 		// Apply the modifier to our cloned geometry.
 		modifier.modify( smooth );
@@ -145,13 +131,13 @@ function initMeow2(){
 		//var materialArray
 		//var vertexColorMaterial = new THREE.MeshBasicMaterial( { vertexColors: THREE.VertexColors } );
 		mesh = new THREE.Mesh( smooth, new THREE.MeshFaceMaterial( materials ) );
-		mesh.scale.set(5,5,5);
-		scene.add( mesh );
-	} );
-	
-	document.addEventListener( 'mousemove', onDocumentMouseMove, false );
+		mesh.scale.set(4,4,4);
+		mesh.translateX(5); 
+		mesh.translateY(1);
+		mesh.translateZ(4.7);
 
-	window.addEventListener( 'resize', onWindowResize, false );
-	
-	
+		mesh.translateX(x);
+		mesh.translateZ(z);
+		chessBoard.add( mesh );
+	} );
 }
