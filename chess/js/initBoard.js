@@ -35,7 +35,7 @@ function init() {
 	initMeow2('objects/bishop.json', 10, 30);
 	initMeow2('objects/knight.json', -30, 30);
 	initMeow2('objects/knight.json', 20, 30);
-	
+
 	var pawnLocal = -40;
 	for(var i = 0; i < 8; i++)
 	{
