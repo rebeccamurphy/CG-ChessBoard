@@ -37,6 +37,7 @@
 		<script src="js/stats.min.js"></script>
 		<script src="js/SubdivisionModifier.js"></script>
 		<script src="js/initBoard.js"></script>
+		<script src="js/jsonparse.js"></script>
 
 		<script>
 			var container, stats;
@@ -53,7 +54,7 @@
 
 			init();
 			animate();
-			
+			getGame('http://www.bencarle.com/chess/cg/340');
 
 			//var scene;
 			
