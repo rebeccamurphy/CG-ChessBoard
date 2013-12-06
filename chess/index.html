@@ -38,6 +38,9 @@
 		<script src="js/SubdivisionModifier.js"></script>
 		<script src="js/initBoard.js"></script>
 		<script src="js/jsonparse.js"></script>
+		<script src="js/require.js"></script>
+		<script type="text/javascript" src="js/dat.gui.min.js"></script>
+
 
 		<script>
 			var container, stats;
@@ -51,7 +54,17 @@
 			var windowHalfX = window.innerWidth / 2;
 			var windowHalfY = window.innerHeight / 2;
 			
+			var gui = new DAT.GUI();
+			/*({
+   				height : 5 * 32 - 1
+				});*/
 
+			/* TODO 
+			JSON parsing
+			datgui
+			changes textures
+			second model set
+			*/
 			init();
 			animate();
 			getGame('http://www.bencarle.com/chess/cg/340');
