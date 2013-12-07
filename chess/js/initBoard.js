@@ -45,7 +45,7 @@ function init() {
 	renderer.setSize( window.innerWidth, window.innerHeight );
 	container.appendChild( renderer.domElement );
 
-	//document.addEventListener( 'mousemove', onDocumentMouseMove, false );
+	document.addEventListener( 'mousemove', onDocumentMouseMove, false );
 
 	window.addEventListener( 'resize', onWindowResize, false );
 
@@ -96,10 +96,10 @@ function animate() {
 }
 
 function render() {
-
-	//camera.position.x += ( mouseX - camera.position.x ) * .05;
-	//camera.position.y += ( - mouseY - camera.position.y ) * .05;
-	
+	if (mousemove ==true)
+	{ camera.position.x += ( mouseX - camera.position.x ) * .05;
+	  camera.position.y += ( - mouseY - camera.position.y ) * .05;
+	}
 	camera.lookAt( scene.position );
 	//console.log(scene.position);
 	//camera.lookAt(new THREE.Vector3(0,0,500));

@@ -53,6 +53,7 @@
 			var whiteQueen, whiteKing, whiteBishop1, whiteBishop2, whiteKnight1, whiteKnight2, whiteRook1, whiteRook2;
 			var whitePawn1, whitePawn2, whitePawn3, whitePawn4, whitePawn5, whitePawn6, whitePawn7, whitePawn8;
 			
+			var mousemove = false;
 
 			var mouseX = 0, mouseY = 0;
 
@@ -70,28 +71,16 @@
 							camera.position.x = 0;
 	  							};
   							// Define render logic ...
-							
-							this.mousemove = function() {
-								document.addEventListener( 'mousemove', onDocumentMouseMove, false );
-								camera.position.x += ( mouseX - camera.position.x ) * .05;
-								camera.position.y += ( - mouseY - camera.position.y ) * .05;
-  			
-  								console.log('got here');
-  								};	
 							};
+
 			var view = new guiView();
 			var gui = new DAT.GUI();
   			gui.add(view, 'topView');
-  			gui.add(view, 'mousemove');
   			var listen = gui.add(view, 'mouseControl').listen();
   			listen.onChange(function(value){
-  			document.addEventListener( 'mousemove', onDocumentMouseMove, false );
-  			camera.position.x += ( mouseX - camera.position.x ) * .05;
-			camera.position.y += ( - mouseY - camera.position.y ) * .05;
-  			
-  			console.log('got here');
-  			
+  			mousemove = value;
   			});
+
 			/* TODO 
 			JSON parsing
 			datgui
