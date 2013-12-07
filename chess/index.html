@@ -4,6 +4,7 @@
 		<title>Legit Chess</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		
 		<style>
 			body {
 				font-family: Monospace;
@@ -23,6 +24,7 @@
 			}
 			#info a, .button { color: #f00; font-weight: bold; text-decoration: underline; cursor: pointer }
 		</style>
+	
 	</head>
 
 	<body>
@@ -57,21 +59,54 @@
 			var windowHalfX = window.innerWidth / 2;
 			var windowHalfY = window.innerHeight / 2;
 			
+		
+			
+			var guiView = function() {
+  							this.mouseControl = false;
+  							this.topView = function() {
+  							camera = new THREE.PerspectiveCamera( 20, window.innerWidth / window.innerHeight, 1, 1000 );
+							camera.position.z = 50;
+							camera.position.y = 300;
+							camera.position.x = 0;
+	  							};
+  							// Define render logic ...
+							
+							this.mousemove = function() {
+								document.addEventListener( 'mousemove', onDocumentMouseMove, false );
+								camera.position.x += ( mouseX - camera.position.x ) * .05;
+								camera.position.y += ( - mouseY - camera.position.y ) * .05;
+  			
+  								console.log('got here');
+  								};	
+							};
+			var view = new guiView();
 			var gui = new DAT.GUI();
-			/*({
-   				height : 5 * 32 - 1
-				});*/
-
+  			gui.add(view, 'topView');
+  			gui.add(view, 'mousemove');
+  			var listen = gui.add(view, 'mouseControl').listen();
+  			listen.onChange(function(value){
+  			document.addEventListener( 'mousemove', onDocumentMouseMove, false );
+  			camera.position.x += ( mouseX - camera.position.x ) * .05;
+			camera.position.y += ( - mouseY - camera.position.y ) * .05;
+  			
+  			console.log('got here');
+  			
+  			});
 			/* TODO 
 			JSON parsing
 			datgui
 			changes textures
 			second model set
 			*/
-			init();
-			animate();
-			getGame('http://www.bencarle.com/chess/cg/340');
 
+			
+
+    		init();
+			animate();
+			//getGame('http://www.bencarle.com/chess/cg/340');
+			document.addEventListener( 'mousemove', onDocumentMouseMove, false );
+  			camera.position.x += ( mouseX - camera.position.x ) * .05;
+			camera.position.y += ( - mouseY - camera.position.y ) * .05;
 			//var scene;
 			
 			//initMeow();
