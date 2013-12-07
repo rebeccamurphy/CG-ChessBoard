@@ -45,7 +45,7 @@
 		<script src="js/require.js"></script>
 		
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
-
+		<script src="js/jquery.xdomainajax.js"></script>
 
 		<script>
 			var container, stats;
@@ -122,14 +122,30 @@
 			animate();
 			//simpleHttpRequest('http://www.bencarle.com/chess/cg/340');
 			url = 'http://www.bencarle.com/chess/cg/340';
-			var xhr = createCORSRequest('GET', url);
+			
+			/*var xhr = createCORSRequest('GET', url);
 			if (!xhr) {
    					 alert('CORS not supported');
    					 return;
   					}
 
+
 			console.log(xhr.responseText);
 			xhr.send();
+			*/
+			
+			$('#container').load('http://www.bencarle.com'); // SERIOUSLY!
+$.ajax({
+    url: 'http://www.bencarle.com/chess/cg/340',
+    type: 'GET',
+    success: function(res) {
+       console.log(res);
+    }
+});
+ 
+
+
+
 			document.addEventListener( 'mousemove', onDocumentMouseMove, false );
   			camera.position.x += ( mouseX - camera.position.x ) * .05;
 			camera.position.y += ( - mouseY - camera.position.y ) * .05;
