@@ -61,6 +61,7 @@
 			var windowHalfX = window.innerWidth / 2;
 			var windowHalfY = window.innerHeight / 2;
 			
+			var player =0;
 		
 			
 			var guiView = function() {
@@ -73,13 +74,32 @@
 							camera.position.y = 300;
 							camera.position.x = 0;
 	  							};
-  							// Define render logic ...
+  							this.flipPlayer = function(){
+  								console.log(camera.position.z);
+  								var temp = camera.position.y;
+  								var tempZ = camera.position.z;
+  								camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 1000 );
+  								camera.position.y = temp;
+  								if (player %2 ==0)
+  									camera.position.z = -100;
+  								else
+									camera.position.z = 100;
+								if (tempZ ==50)
+									{
+										camera = new THREE.PerspectiveCamera( 20, window.innerWidth / window.innerHeight, 1, 1000 );
+										camera.position.z =-50;
+										camera.position.y = temp;
+									}
+								
+								player+=1;
+  							};
 							};
 
 			var view = new guiView();
 			var gui = new DAT.GUI();
   			gui.add(view, 'topView');
   			gui.add(view, 'mouseControl');
+  			gui.add(view, 'flipPlayer');
 
   			/*var listen = gui.add(view, 'mouseControl').listen();
   			listen.onChange(function(value){
@@ -105,7 +125,6 @@
 			//var scene;
 			window.addEventListener('keypress', function (e) {
     		if (e.keyCode == 13) {
-    			
         		mousemove = !mousemove;
     			}
 		}, false);	//initMeow();

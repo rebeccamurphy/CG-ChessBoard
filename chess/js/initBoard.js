@@ -27,6 +27,14 @@ function init() {
 	directionalLight.position.set( 0.5, 2, 1 ).normalize();
 	scene.add( directionalLight );
 
+    var pointLight2 = new THREE.PointLight( 0xffeedd );
+    pointLight2.position.set( -100, 250, -25 ).normalize();
+    scene.add( pointLight2 );
+    
+	var pointLight = new THREE.PointLight( 0xffffff );
+    pointLight.position.set( 50, 200, 100 ).normalize();
+    scene.add( pointLight );
+
 	// model
 	chessBoard = new THREE.Object3D(); //group node
 
