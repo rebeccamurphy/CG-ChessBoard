@@ -120,17 +120,25 @@
 
     		init();
 			animate();
-			getGame('http://www.bencarle.com/chess/cg/340');
+			//simpleHttpRequest('http://www.bencarle.com/chess/cg/340');
+			url = 'http://www.bencarle.com/chess/cg/340';
+			var xhr = createCORSRequest('GET', url);
+			if (!xhr) {
+   					 alert('CORS not supported');
+   					 return;
+  					}
+
+			console.log(xhr.responseText);
+			xhr.send();
 			document.addEventListener( 'mousemove', onDocumentMouseMove, false );
   			camera.position.x += ( mouseX - camera.position.x ) * .05;
 			camera.position.y += ( - mouseY - camera.position.y ) * .05;
-			//var scene;
+			
 			window.addEventListener('keypress', function (e) {
     		if (e.keyCode == 13) {
         		mousemove = !mousemove;
-    			}
-		}, false);	//initMeow();
-			//animate();
+    						}
+						}, false);	
 
 		</script>
 
