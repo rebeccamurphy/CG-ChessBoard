@@ -12,7 +12,7 @@ function requestCrossDomain( site, gameOver) {
     }  
       
     // Take the provided url, and add it to a YQL query. Make sure you encode it!  
-    var yql = 'http://query.yahooapis.com/v1/public/yql?q=' + encodeURIComponent('select * from html where url="' + site + '"') + '&format=json&callback=?';  
+    var yql = 'https://query.yahooapis.com/v1/public/yql?q=' + encodeURIComponent('select * from html where url="' + site + '"') + '&format=json&callback=?';  
     //  var yql = 'http://query.yahooapis.com/v1/public/yql?q=' + encodeURIComponent('select * from html where url="' + site + '"') + '&format=xml&callback=?';  
     // Request that YSQL string, and run a callback function.  
     // Pass a defined function to prevent cache-busting.  
