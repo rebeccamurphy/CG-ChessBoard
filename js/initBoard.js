@@ -21,7 +21,9 @@ function init() {
 	scene = new THREE.Scene();
 
 	var ambient = new THREE.AmbientLight( 0x101010 );
+	var ambient2 = new THREE.AmbientLight(  0x404040  );
 	scene.add( ambient );
+	scene.add( ambient2 );
 
 	var directionalLight = new THREE.DirectionalLight( 0xffeedd );
 	directionalLight.position.set( 0.5, 2, 1 ).normalize();
@@ -34,6 +36,20 @@ function init() {
 	var pointLight = new THREE.PointLight( 0xffffff );
     pointLight.position.set( 50, 200, 100 ).normalize();
     scene.add( pointLight );
+
+    var spotLight = new THREE.SpotLight( 0xffffff );
+	spotLight.position.set( 100, 1000, 100 );
+
+	spotLight.castShadow = true;
+
+	spotLight.shadowMapWidth = 1024;
+	spotLight.shadowMapHeight = 1024;
+
+	spotLight.shadowCameraNear = 500;
+	spotLight.shadowCameraFar = 4000;
+	spotLight.shadowCameraFov = 30;
+
+	scene.add( spotLight );
 
 	// model
 	chessBoard = new THREE.Object3D(); //group node
