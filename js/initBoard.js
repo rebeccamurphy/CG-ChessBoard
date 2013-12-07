@@ -27,7 +27,8 @@ function init() {
 		chessBoard.add( board );
 	} );
 	
-	initWhite();
+	initWhite(0);
+	initBlack(0);
 	
 	scene.add( chessBoard );
 
