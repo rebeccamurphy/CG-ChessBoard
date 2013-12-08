@@ -14,12 +14,12 @@ function initBlack(modelNumber)
 	{
 		initPieces('objects/blackQueen.json', 0, -40, blackQueen);
 		initPieces('objects/blackKing.json', -10, -40, blackKing);
-		initPieces('objects/blackRook.json', 30, -40, blackRook1, blackRook2);
-		blackRook2.translateX(-40);
-		initPieces('objects/blackBishop.json', 10, -40, blackBishop1, blackBishop2);
-		blackBishop2.translateX(-20);
-		initPieces('objects/blackKnight.json', 20, -40, blackKnight1, blackKnight2);
-		blackKnight2.translateX(-30);
+		initPieces('objects/blackRook.json', -40, -40, blackRook1, blackRook2);
+		blackRook2.translateX(30);
+		initPieces('objects/blackBishop.json', -20, -40, blackBishop1, blackBishop2);
+		blackBishop2.translateX(10);
+		initPieces('objects/blackKnight.json', -30, -40, blackKnight1, blackKnight2);
+		blackKnight2.translateX(20);
 	}
 	else //more or less the same as what is in the if, but with the second set of file names.
 	{
@@ -66,11 +66,11 @@ function initBlackPawns(modelNumber)
 		
 	}
 	
-	var pawnLocal = 30;
+	var pawnLocal = -40;
 	for(var i = 0; i < 8; i++)  //makes the row and adds them to the scene
 	{
 		pawnArray[i].translateX(pawnLocal);
 		scene.add(pawnArray[i]);
-		pawnLocal -= 10;
+		pawnLocal += 10;
 	}
 }

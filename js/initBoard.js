@@ -29,6 +29,7 @@ function init() {
 	
 	initWhite(0);
 	initBlack(0);
+	initBoardArray();
 	
 	scene.add( chessBoard );
 
@@ -83,6 +84,17 @@ function onDocumentMouseMove( event ) {
 
 function animate() {
 	requestAnimationFrame( animate );
+	
+	//also include something about the animation not finishing/animating.
+	if(currentTurn !== lastTurn - 1 && count === 0) //change to || to test
+	{
+		pieceMove();
+		cat = 1;
+		count = 100;
+	}
+	count -= 10;
+	//update the json pulled from the server here, and the array, and the last turn number.
+	
 	render();
 }
 
