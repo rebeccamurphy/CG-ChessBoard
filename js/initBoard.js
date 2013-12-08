@@ -1,3 +1,4 @@
+
 function init() {
 	
 	container = document.createElement( 'div' );
@@ -22,20 +23,20 @@ function init() {
 
 	var ambient = new THREE.AmbientLight( 0x101010 );
 	var ambient2 = new THREE.AmbientLight(  0x404040  );
-	scene.add( ambient );
-	scene.add( ambient2 );
+//	scene.add( ambient );
+//	scene.add( ambient2 );
 
 	var directionalLight = new THREE.DirectionalLight( 0xffeedd );
 	directionalLight.position.set( 0.5, 2, 1 ).normalize();
-	scene.add( directionalLight );
+	//scene.add( directionalLight );
 
     var pointLight2 = new THREE.PointLight( 0xffeedd );
     pointLight2.position.set( -100, 250, -25 ).normalize();
-    scene.add( pointLight2 );
+  //  scene.add( pointLight2 );
     
 	var pointLight = new THREE.PointLight( 0xffffff );
     pointLight.position.set( 50, 200, 100 ).normalize();
-    scene.add( pointLight );
+    //scene.add( pointLight );
 
     var spotLight = new THREE.SpotLight( 0xffffff );
 	spotLight.position.set( 100, 1000, 100 );
@@ -49,7 +50,7 @@ function init() {
 	spotLight.shadowCameraFar = 4000;
 	spotLight.shadowCameraFov = 30;
 
-	scene.add( spotLight );
+//	scene.add( spotLight );
 
 	// model
 	chessBoard = new THREE.Object3D(); //group node
