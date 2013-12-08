@@ -12,8 +12,8 @@ function initBlack(modelNumber)
 	//for handling the two sets of models.
 	if(modelNumber === 0)
 	{
-		initPieces('objects/blackQueen.json', 0, -40, blackQueen);
-		initPieces('objects/blackKing.json', -10, -40, blackKing);
+		initPieces('objects/blackQueen.json', -10, -40, blackQueen);
+		initPieces('objects/blackKing.json', 0, -40, blackKing);
 		initPieces('objects/blackRook.json', -40, -40, blackRook1, blackRook2);
 		blackRook2.translateX(30);
 		initPieces('objects/blackBishop.json', -20, -40, blackBishop1, blackBishop2);

@@ -42,12 +42,12 @@ function initBoardArray()
 	boardArray[3][0] = [1, whiteQueen];
 	boardArray[3][1] = [1, whitePawn4];
 	boardArray[3][6] = [1, blackPawn4];
-	boardArray[3][7] = [1, blackKing];
+	boardArray[3][7] = [1, blackQueen];
 	
 	boardArray[4][0] = [1, whiteKing];
 	boardArray[4][1] = [1, whitePawn5];
 	boardArray[4][6] = [1, blackPawn5];
-	boardArray[4][7] = [1, blackQueen];
+	boardArray[4][7] = [1, blackKing];
 	
 	boardArray[5][0] = [1, whiteBishop2];
 	boardArray[5][1] = [1, whitePawn6];
