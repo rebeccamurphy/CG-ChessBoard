@@ -41,7 +41,7 @@ function getGame(gameUrl)
     xmlHttp = new XMLHttpRequest();
     xmlHttp.open( "GET", gameUrl, false );
     xmlHttp.send( null );
-    console.log(xmlHttp.responseText)
-    return xmlHttp.responseText;
+    console.log(JSON.parse(xmlHttp.responseText));
+    return JSON.parse(xmlHttp.responseText);
 
 }
