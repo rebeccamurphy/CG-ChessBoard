@@ -32,6 +32,9 @@ function initWhite()
 	initWhitePawns();
 	
 	whitePawn1.translateZ(-20); //example move
+
+	console.log(whiteQueen);
+	console.log(whiteQueen.children[0]);
 }
 
 //initializes all of the pawns.
