@@ -1,4 +1,5 @@
-//This file will handle all the server communication and json parsing. 
+//This file will handle all the server communication and json parsing. I know we don't really need it anymore, but its here for debugging
+//purposed and incase we do need to use bencarle.com
 
 function requestCrossDomain( site, gameOver) {  
      /*
@@ -18,12 +19,6 @@ function requestCrossDomain( site, gameOver) {
     // Pass a defined function to prevent cache-busting.  
     
     $.getJSON( yql, moveList);  
-   
-    
-    function cbFunc(data) {  
-    // If we have something to work with... 
-    callback(data); 
-    } 
     
 }  
 
@@ -34,7 +29,7 @@ function moveList(results)
 
 }
 
-function getGame(gameUrl)
+function getGame(gameUrl, turn)
 {
     var xmlHttp = null;
 

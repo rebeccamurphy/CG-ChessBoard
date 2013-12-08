@@ -109,6 +109,20 @@
   			mousemove = value;
   			});
 			*/
+			init();
+			animate();
+			
+			document.addEventListener( 'mousemove', onDocumentMouseMove, false );
+  			camera.position.x += ( mouseX - camera.position.x ) * .05;
+			camera.position.y += ( - mouseY - camera.position.y ) * .05;
+			
+			window.addEventListener('keypress', function (e) {
+    		if (e.keyCode == 13) {
+        		mousemove = !mousemove;
+    						}
+						}, false);	
+
+
 
 			/* TODO 
 			JSON parsing
@@ -123,17 +137,7 @@
 
 			
 
-    		init();
-			animate();
-			document.addEventListener( 'mousemove', onDocumentMouseMove, false );
-  			camera.position.x += ( mouseX - camera.position.x ) * .05;
-			camera.position.y += ( - mouseY - camera.position.y ) * .05;
-			
-			window.addEventListener('keypress', function (e) {
-    		if (e.keyCode == 13) {
-        		mousemove = !mousemove;
-    						}
-						}, false);	
+    		
 
 		</script>
 
