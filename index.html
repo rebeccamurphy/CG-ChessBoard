@@ -45,9 +45,9 @@
 		<script src="js/blackPieces.js"></script>
 		<script src="js/movement.js"></script>
 		<script src="js/jsonparse.js"></script>
-		<div id= "GameOptions" style="float: left;" ></div>
-		<div id= "Camera" style="float: right;" ></div>
-		<div id ="container" > </div>
+		<!--<div id= "GameOptions" style="float: left;" ></div>-->
+		
+		
 		<script>
 			var container, stats;
 
@@ -101,17 +101,13 @@
 
 			window.onload =function(){
 			init(modelKind); 
-			document.getElementById('GameOptions').appendChild(guiGame.domElement);
-			document.getElementById('Camera').appendChild(guiCamera.domElement);
+			//document.getElementById('GameOptions').appendChild(guiGame.domElement);
+			//document.getElementById('Camera').appendChild(guiCamera.domElement);
 			animate();
 
 			};
-           	window.addEventListener('keypress', function (e) {
-                    if (e.keyCode == 13) {
-                    	console.log(mousemove);
-                        mousemove = !mousemove;
-                                                    }
-                                                }, false);  
+           	
+
 
 
 			//animate();

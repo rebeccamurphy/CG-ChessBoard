@@ -1,14 +1,29 @@
 function init(modelKind) {
+	//these if-else are for reloading the board with a different texture. 
 	if (document.getElementById('boardcontainer') !=null)
 	{
   		var olddiv = document.getElementById('boardcontainer');
   		olddiv.parentNode.removeChild(olddiv);
 	}
+	else
+	{
+		document.addEventListener( 'mousemove', onDocumentMouseMove, false );
+		window.addEventListener( 'resize', onWindowResize, false );
+		window.addEventListener('keypress', function (e) {
+                    if (e.keyCode==13) {
+                    	console.log(e.keyCode);
+                        mousemove = !mousemove;
+                    				}
+
+                                                }, false);  
+	}
 	container = document.createElement( 'div' );
 	container.setAttribute("id", "boardcontainer");
 	document.body.appendChild( container );
-	camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 2000 );
-	camera.position.z = 100;
+ 	camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 1000 );
+        //camera = new THREE.OrthographicCamera( window.innerWidth / - 2, window.innerWidth / 2, window.innerHeight / 2, window.innerHeight / - 2, 1, 1000  );
+        camera.position.z = 100;
+        camera.position.y = 100;
 
 	// scene
 
@@ -54,16 +69,7 @@ function init(modelKind) {
 	renderer.setSize( window.innerWidth, window.innerHeight );
 	container.appendChild( renderer.domElement );
 
-	document.addEventListener( 'mousemove', onDocumentMouseMove, false );
-
-	window.addEventListener( 'resize', onWindowResize, false );
-
-	window.addEventListener('keypress', function (e) {
-                    if (e.keyCode == 16) {
-                    	console.log(mousemove);
-                        mousemove = !mousemove;
-                                                    }
-                                                }, false);  
+	
 
 
 }
