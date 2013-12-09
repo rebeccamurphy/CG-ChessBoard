@@ -1,4 +1,4 @@
-function initBlack(modelNumber)
+function initBlack(modelKind)
 {
 	blackQueen = new THREE.Object3D();
 	blackKing = new THREE.Object3D();
@@ -10,20 +10,16 @@ function initBlack(modelNumber)
 	blackKnight2 = new THREE.Object3D();
 	
 	//for handling the two sets of models.
-	if(modelNumber === 0)
-	{
-		initPieces('objects/Marble/blackQueen.json', -10, -40, blackQueen);
-		initPieces('objects/Marble/blackKing.json', 0, -40, blackKing);
-		initPieces('objects/Marble/blackRook.json', -40, -40, blackRook1, blackRook2);
+	
+		initPieces('objects/'+ modelKind +'/blackQueen.json', -10, -40, blackQueen);
+		initPieces('objects/'+ modelKind +'/blackKing.json', 0, -40, blackKing);
+		initPieces('objects/'+ modelKind +'/blackRook.json', -40, -40, blackRook1, blackRook2);
 		blackRook2.translateX(30);
-		initPieces('objects/Marble/blackBishop.json', -20, -40, blackBishop1, blackBishop2);
+		initPieces('objects/'+ modelKind +'/blackBishop.json', -20, -40, blackBishop1, blackBishop2);
 		blackBishop2.translateX(10);
-		initPieces('objects/Marble/blackKnight.json', -30, -40, blackKnight1, blackKnight2);
+		initPieces('objects/'+ modelKind +'/blackKnight.json', -30, -40, blackKnight1, blackKnight2);
 		blackKnight2.translateX(20);
-	}
-	else //more or less the same as what is in the if, but with the second set of file names.
-	{
-	}
+	
 	
 	scene.add(blackQueen);
 	scene.add(blackKing);
@@ -34,13 +30,13 @@ function initBlack(modelNumber)
 	scene.add(blackKnight1);
 	scene.add(blackKnight2);
 	
-	initBlackPawns(modelNumber); //same as above
+	initBlackPawns(modelKind); //same as above
 	
 	//whitePawn1.translateZ(-20); //example move
 }
 
 //initializes all of the pawns.
-function initBlackPawns(modelNumber)
+function initBlackPawns(modelKind)
 {
 	blackPawn1 = new THREE.Object3D(); // first as 3js objects
 	blackPawn2 = new THREE.Object3D();
@@ -57,14 +53,8 @@ function initBlackPawns(modelNumber)
 		pawnArray.push(eval("blackPawn" + i));
 	}
 	
-	if(modelNumber === 0) //same as above
-	{
-		initPawnsHelper('objects/Marble/blackPawn.json', -30, pawnArray); //initializes all of the pawns from the array
-	}
-	else
-	{
-		
-	}
+		initPawnsHelper('objects/'+ modelKind +'/blackPawn.json', -30, pawnArray); //initializes all of the pawns from the array
+
 	
 	var pawnLocal = -40;
 	for(var i = 0; i < 8; i++)  //makes the row and adds them to the scene

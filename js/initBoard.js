@@ -1,4 +1,4 @@
-function init() {
+function init(modelKind) {
 	
 	container = document.createElement( 'div' );
 	document.body.appendChild( container );
@@ -34,14 +34,14 @@ function init() {
 	chessBoard = new THREE.Object3D(); //group node
 
 	var loader = new THREE.OBJMTLLoader(); //chess board files here, you could easily rename them
-	loader.load( 'objects/chessboard.obj', 'objects/chessboard.mtl', function ( object ) {
+	loader.load( 'objects/' + modelKind+'/chessboard.obj', 'objects/'+modelKind+'/chessboard.mtl', function ( object ) {
 		object.scale.set(5,5,5);
 		board = object;
 		chessBoard.add( board );
 	} );
 	
-	initWhite(modelNumber);
-	initBlack(modelNumber);
+	initWhite(modelKind);
+	initBlack(modelKind);
 	initBoardArray();
 	
 	scene.add( chessBoard );

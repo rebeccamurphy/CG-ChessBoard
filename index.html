@@ -71,7 +71,7 @@
 
 			var turnArray = jsonobj.moves;
 			
-			var modelNumber = 0;
+			var modelKind = 'Plain';
 
 			var count = 400;
 			var animationFlag = 0;
@@ -132,7 +132,7 @@
               gui.add(view, 'mouseControl');
               gui.add(view, 'flipPlayer');
 
-			init();
+			init(modelKind);
 			animate();
 			 document.addEventListener( 'mousemove', onDocumentMouseMove, false );
                           camera.position.x += ( mouseX - camera.position.x ) * .05;
