@@ -90,7 +90,7 @@ function animate() {
 	{
 		pieceMove();
 		cat = 1;
-		count = 100;
+		count = 200;
 	}
 	count -= 10;
 	//update the json pulled from the server here, and the array, and the last turn number.
