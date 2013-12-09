@@ -47,6 +47,7 @@
 		<script src="js/jsonparse.js"></script>
 		<div id= "GameOptions" style="float: left;" ></div>
 		<div id= "Camera" style="float: right;" ></div>
+		<div id ="container" > </div>
 		<script>
 			var container, stats;
 
@@ -94,9 +95,9 @@
 			var windowHalfX = window.innerWidth / 2;
 			var windowHalfY = window.innerHeight / 2;
 			var player =0;
-           	init(modelKind);   
+           	  
 			window.onload =function(){
-			
+			init(modelKind); 
 			document.getElementById('GameOptions').appendChild(guiGame.domElement);
 			document.getElementById('Camera').appendChild(guiCamera.domElement);
 			animate();

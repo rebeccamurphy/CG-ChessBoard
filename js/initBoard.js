@@ -1,8 +1,12 @@
 function init(modelKind) {
-	
+	if (document.getElementById('boardcontainer') !=null)
+	{
+  		var olddiv = document.getElementById('boardcontainer');
+  		olddiv.parentNode.removeChild(olddiv);
+	}
 	container = document.createElement( 'div' );
+	container.setAttribute("id", "boardcontainer");
 	document.body.appendChild( container );
-
 	camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 2000 );
 	camera.position.z = 100;
 

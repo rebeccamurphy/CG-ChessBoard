@@ -61,7 +61,17 @@ var FizzyText = function() {
 
 var text = new FizzyText();
 var guiGame = new DAT.GUI({ autoPlace: false });
-  guiGame.add(Options, 'theme').options( 'Classic Marble', 'Classic Plain');
+var themeListener = guiGame.add(Options, 'theme').options('Classic Plain', 'Classic Marble');
+themeListener.onChange(function(value)
+{
+  if (value == "Classic Plain")
+    init('Plain');
+  else if (value == "Classic Marble")
+    init('Marble');
+});
+
 var idListerner =  guiGame.add(Options, 'gameId');
 idListerner.onFinishChange(function(value){gameid = value;});
-  guiGame.add(Options, 'start');
+
+
+guiGame.add(Options, 'start');
