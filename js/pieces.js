@@ -1,4 +1,4 @@
-function initWhite()
+function initWhite(option)
 {
 	whiteQueen = new THREE.Object3D();
 	whiteKing = new THREE.Object3D();
@@ -8,8 +8,9 @@ function initWhite()
 	whiteBishop2 = new THREE.Object3D();
 	whiteKnight1 = new THREE.Object3D();
 	whiteKnight2 = new THREE.Object3D();
-	ben = new THREE.Object3D();
 	
+	if (option ==0)
+	{
 	initPieces('objects/queen.json', -10, 30, whiteQueen);
 	initPieces('objects/king.json', 0, 30, whiteKing);
 	initPieces('objects/rook.json', -40, 30, whiteRook1, whiteRook2);
@@ -21,7 +22,21 @@ function initWhite()
 	//initPieces('objects/kingBen.js', -30, 30, ben);
 	//initPieces('objects/knight.json', 20, 30, whiteKnight2);
 	whiteKnight2.translateX(20);
-	
+	}
+	else 
+	{
+	initPieces('objects/queenHaeys.js', -10, 30, whiteQueen);
+	initPieces('objects/king2.js', 0, 30, whiteKing);
+	initPieces('objects/hancock.js', -40, 30, whiteRook1, whiteRook2);
+	whiteRook2.translateX(30);
+	initPieces('objects/alanBishop.js', -20, 30, whiteBishop1, whiteBishop2);
+	//initPieces('objects/bishop.json', 10, 30, whiteBishop2);
+	whiteBishop2.translateX(10);
+	initPieces('objects/knight.js', -30, 30, whiteKnight1, whiteKnight2);
+	//initPieces('objects/kingBen.js', -30, 30, ben);
+	//initPieces('objects/knight.json', 20, 30, whiteKnight2);
+	whiteKnight2.translateX(20);
+	}
 	scene.add(whiteQueen);
 	scene.add(whiteKing);
 	scene.add(whiteRook1);
