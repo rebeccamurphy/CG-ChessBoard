@@ -9,6 +9,8 @@ function initWhite(option)
 	whiteKnight1 = new THREE.Object3D();
 	whiteKnight2 = new THREE.Object3D();
 	
+	console.log(whiteQueen.id);
+
 	if (option ==0)
 	{
 	initPieces('objects/queen.json', -10, 30, whiteQueen);
@@ -49,19 +51,19 @@ function initWhite(option)
 	}
 
 	scene.add(whiteQueen);
-	/*scene.add(whiteKing);
+	scene.add(whiteKing);
 	scene.add(whiteRook1);
 	scene.add(whiteRook2);
 	scene.add(whiteBishop1);
 	scene.add(whiteBishop2);
 	scene.add(whiteKnight1);
 	scene.add(whiteKnight2);
-	scene.add(ben);
+	
 	
 	initWhitePawns();
 	
 	whitePawn1.translateZ(-20); //example move
-	*/
+	
 	
 	//console.log(whiteQueen.children[0]);
 }

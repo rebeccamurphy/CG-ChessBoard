@@ -62,7 +62,7 @@ function init() {
 		chessBoard.add( board );
 	} );
 	
-	initWhite();
+	initWhite(0);
 	console.log('chessboardid' + chessBoard.id);
 	scene.add( chessBoard );
 

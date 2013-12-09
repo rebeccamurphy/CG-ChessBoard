@@ -52,9 +52,10 @@
 
 			var camera, scene, renderer;
 			var chessBoard;
-			var whiteQueen, whiteKing, whiteBishop1, whiteBishop2, whiteKnight1, whiteKnight2, whiteRook1, whiteRook2;
-			var whitePawn1, whitePawn2, whitePawn3, whitePawn4, whitePawn5, whitePawn6, whitePawn7, whitePawn8, ben;
+			var whiteQueen = new THREE.Object3D(), whiteKing, whiteBishop1, whiteBishop2, whiteKnight1, whiteKnight2, whiteRook1, whiteRook2;
+			var whitePawn1, whitePawn2, whitePawn3, whitePawn4, whitePawn5, whitePawn6, whitePawn7, whitePawn8;
 			
+			whiteQueen.name = "findme";
 			var mousemove = false;
 
 			var mouseX = 0, mouseY = 0;
@@ -64,7 +65,14 @@
 			
 			var player =0;
 		
+			var loader = new THREE.OBJMTLLoader(); //chess board files here, you could easily rename them
+			loader.load( 'objects/queen.obj', 'objects/queen.mtl', function ( object ) {
+			object.scale.set(4,4,4);
+			queen = object;
+			queen.name ="helpmeplz";
+			scene.add( queen );
 			
+			} );
 			var guiView = function() {
   							this.mouseControl = function(){
   								mousemove = !mousemove;
@@ -133,9 +141,23 @@
         		mousemove = !mousemove;
     						}
 						}, false);	
+			
+			
+			//console.log(scene.children[8]);
 			console.log(scene.children);
-			console.log(scene.children[8]);
-			console.log(whiteQueen);
+			console.log(scene.children[7].getObjectById('39'));
+
+			function cloneObj ( obj ) {
+   			 var i, cpy = new THREE.Object3D();
+    			for (var i in obj.children) {
+    				console.log(obj.children[i].geometry);
+        		cpy.add(
+            		new THREE.Mesh(obj.children[i].geometry)
+        				);
+    				}
+    			return cpy;
+			}
+			//console.log(cloneObj(whiteQueen));
 
 		</script>
 
