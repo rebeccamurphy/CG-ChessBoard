@@ -54,6 +54,7 @@ function init(modelKind) {
 
 	window.addEventListener( 'resize', onWindowResize, false );
 
+
 }
 
 function cloneObj ( obj ) {
@@ -97,8 +98,9 @@ function onDocumentMouseMove( event ) {
 
 function animate() {
 	requestAnimationFrame( animate );
-	
+	// TOM I COMMENTED THIS OUT MOMENTARILY. 
 	//also include something about the animation not finishing/animating.
+	if (startGame==true){
 	if(currentTurn !== lastTurn && count === 0 && animationFlag === 0) //change to || to test
 	{
 		pieceMove();
@@ -130,7 +132,8 @@ function animate() {
 			count = 0;
 		}
 	}
-	
+
+	}
 	if (gameid != "None")
 	{
 		jsonobj = getGame('https://10.11.18.65/cg/chess/' + gameid);
