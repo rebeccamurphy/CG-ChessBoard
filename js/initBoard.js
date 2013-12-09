@@ -63,7 +63,7 @@ function init() {
 	} );
 	
 	initWhite();
-	
+	console.log('chessboardid' + chessBoard.id);
 	scene.add( chessBoard );
 
 	renderer = new THREE.WebGLRenderer();

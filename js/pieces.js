@@ -23,7 +23,7 @@ function initWhite(option)
 	//initPieces('objects/knight.json', 20, 30, whiteKnight2);
 	whiteKnight2.translateX(20);
 	}
-	else 
+	else if (option ==1)
 	{
 	initPieces('objects/queenHaeys.js', -10, 30, whiteQueen);
 	initPieces('objects/king2.js', 0, 30, whiteKing);
@@ -37,8 +37,19 @@ function initWhite(option)
 	//initPieces('objects/knight.json', 20, 30, whiteKnight2);
 	whiteKnight2.translateX(20);
 	}
+	else
+	{
+		var loader = new THREE.OBJMTLLoader(); //chess board files here, you could easily rename them
+		loader.load( 'objects/queen.obj', 'objects/queen.mtl', function ( object ) {
+		object.scale.set(4,4,4);
+		queen = object;
+		console.log(queen.id);
+		whiteQueen.add( queen );
+	} );
+	}
+
 	scene.add(whiteQueen);
-	scene.add(whiteKing);
+	/*scene.add(whiteKing);
 	scene.add(whiteRook1);
 	scene.add(whiteRook2);
 	scene.add(whiteBishop1);
@@ -50,9 +61,9 @@ function initWhite(option)
 	initWhitePawns();
 	
 	whitePawn1.translateZ(-20); //example move
-
-	console.log(whiteQueen);
-	console.log(whiteQueen.children[0]);
+	*/
+	
+	//console.log(whiteQueen.children[0]);
 }
 
 //initializes all of the pawns.
