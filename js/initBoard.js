@@ -86,14 +86,44 @@ function animate() {
 	requestAnimationFrame( animate );
 	
 	//also include something about the animation not finishing/animating.
-	if(currentTurn !== lastTurn && count === 0) //change to || to test
+	if(currentTurn !== lastTurn && count === 0 && animationFlag === 0) //change to || to test
 	{
 		pieceMove();
-		cat = 1;
-		count = 200;
+		//count = 200;
 	}
 	count -= 10;
 	//update the json pulled from the server here, and the array, and the last turn number.
+	
+	if(animationFlag === 1)
+	{
+		if(animateCount < 5) //rise
+		{
+			currentPieceExternal.translateX(moveXtransition / 10);
+			currentPieceExternal.translateZ(moveZtransition / 10);
+			currentPieceExternal.translateY(3);
+			animateCount++;
+		}
+		else if(animateCount < 10) //fall
+		{
+			currentPieceExternal.translateX(moveXtransition / 10);
+			currentPieceExternal.translateZ(moveZtransition / 10);
+			currentPieceExternal.translateY(-3);
+			animateCount++;
+		}
+		else //wrap up
+		{
+			animationFlag = 0;
+			animateCount = 0;
+			count = 0;
+		}
+	}
+	
+	if (gameid != "None")
+	{
+		jsonobj = getGame('https://10.11.18.65/cg/chess/' + gameid);
+		turnArray = jsonobj.moves;
+		lastTurn = jsonobj.lastmovenumber;
+	}
 	
 	render();
 }

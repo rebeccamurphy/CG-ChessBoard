@@ -107,9 +107,9 @@ function pieceMove()
 			
 			rookToMove.translateX(30);
 			//going to be based when animations are implemented, same for the next ones
-			moveX = 0;
-			
-			currentPiece.translateX(-20);
+			moveXtransition = -20;
+			moveZtransition = 0;
+			//currentPiece.translateX(-20);
 		}
 		else if(currentTurnString === "Ke1g1")
 		{	
@@ -118,10 +118,9 @@ function pieceMove()
 			boardArray[7][0] = [0, "notAPiece"];
 			
 			rookToMove.translateX(-20);
-			
-			moveX = 0;
-			
-			currentPiece.translateX(20);
+			moveXtransition = 20;
+			moveZtransition = 0;
+			//currentPiece.translateX(20);
 		}
 		else if(currentTurnString === "Ke8c8")
 		{	
@@ -130,10 +129,9 @@ function pieceMove()
 			boardArray[0][7] = [0, "notAPiece"];
 			
 			rookToMove.translateX(30);
-			
-			moveX = 0;
-			
-			currentPiece.translateX(-20);
+			moveXtransition = -20;
+			moveZtransition = 0;
+			//currentPiece.translateX(-20);
 		}
 		else if(currentTurnString === "Ke8g8")
 		{	
@@ -142,10 +140,9 @@ function pieceMove()
 			boardArray[7][7] = [0, "notAPiece"];
 			
 			rookToMove.translateX(-20);
-			
-			moveX = 0;
-			
-			currentPiece.translateX(20);
+			moveXtransition = 20;
+			moveZtransition = 0;
+			//currentPiece.translateX(20);
 		}
 	}
 	else if(currentTurnString.substring(0,1) === "P" && (fpNumberToArray === 0 || fpNumberToArray === 7))//promotion check
@@ -237,9 +234,10 @@ function pieceMove()
 		//for z, up is negative, down is positive in respect to the white side
 		moveZ = (ipNumberToArray - fpNumberToArray) * 10;
 		
-		currentPiece.translateX(moveX);
-		currentPiece.translateZ(moveZ);
-		//alert(moveX.toString() + " " + moveZ.toString());
+		//currentPiece.translateX(moveX);
+		//currentPiece.translateZ(moveZ);
+		moveXtransition = moveX;
+		moveZtransition = moveZ;
 	}
 	else //standard movement
 	{
@@ -265,10 +263,15 @@ function pieceMove()
 		//for z, up is negative, down is positive in respect to the white side
 		moveZ = (ipNumberToArray - fpNumberToArray) * 10;
 		
-		currentPiece.translateX(moveX);
-		currentPiece.translateZ(moveZ);
+		//currentPiece.translateX(moveX);
+		//currentPiece.translateZ(moveZ);
+		moveXtransition = moveX;
+		moveZtransition = moveZ;
 		//alert(moveX.toString() + " " + moveZ.toString());
 	}
 	
+	currentPieceExternal = currentPiece;
+	
+	animationFlag = 1;
 	currentTurn++;
 }
