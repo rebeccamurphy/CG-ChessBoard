@@ -1,5 +1,5 @@
 var player =0;
-      
+
 //camera controls.                        
 var guiView = function() {
             this.mouseControl = function(){
@@ -61,7 +61,7 @@ var FizzyText = function() {
 
 var text = new FizzyText();
 var guiGame = new DAT.GUI({ autoPlace: false });
-var themeListener = guiGame.add(Options, 'theme').options('Classic Plain', 'Classic Marble');
+/*var themeListener = guiGame.add(Options, 'theme').options('Classic Plain', 'Classic Marble');
 themeListener.onChange(function(value)
 {
   if (value == "Classic Plain")
@@ -72,6 +72,6 @@ themeListener.onChange(function(value)
 
 var idListerner =  guiGame.add(Options, 'gameId');
 idListerner.onFinishChange(function(value){gameid = value;});
-
+*/
 
 guiGame.add(Options, 'start');

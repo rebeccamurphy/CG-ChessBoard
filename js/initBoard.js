@@ -58,6 +58,13 @@ function init(modelKind) {
 
 	window.addEventListener( 'resize', onWindowResize, false );
 
+	window.addEventListener('keypress', function (e) {
+                    if (e.keyCode == 16) {
+                    	console.log(mousemove);
+                        mousemove = !mousemove;
+                                                    }
+                                                }, false);  
+
 
 }
 
