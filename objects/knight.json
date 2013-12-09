@@ -26,7 +26,11 @@
 		"colorSpecular" : [0.5, 0.5, 0.5],
 		"depthTest" : true,
 		"depthWrite" : true,
-		"shading" : "Lambert",
+
+		"mapDiffuse" : "paintedRook.png",
+		"mapDiffuseWrap" : ["repeat", "repeat"],
+
+		"shading" : "Phong",
 		"specularCoef" : 50,
 		"transparency" : 1.0,
 		"transparent" : false,

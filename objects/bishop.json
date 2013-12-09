@@ -20,6 +20,18 @@
 		"DbgColor" : 15658734,
 		"DbgIndex" : 0,
 		"DbgName" : "default",
+		"blending" : "NormalBlending",
+		"colorAmbient" : [0.800000011920929, 0.800000011920929, 0.800000011920929],
+		"colorDiffuse" : [0.800000011920929, 0.800000011920929, 0.800000011920929],
+		"colorSpecular" : [1.0, 1.0, 1.0],
+		"depthTest" : true,
+		"depthWrite" : true,
+		"mapDiffuse" : "paintedBishop.png",
+		"mapDiffuseWrap" : ["repeat", "repeat"],
+		"shading" : "Phong",
+		"specularCoef" : 50,
+		"transparency" : 1.0,
+		"transparent" : false,
 		"vertexColors" : false
 	}],
 

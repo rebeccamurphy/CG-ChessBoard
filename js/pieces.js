@@ -1,53 +1,43 @@
-whiteKing = new THREE.Object3D();
-whiteKing2 = null;
 function initWhite()
 {
 	whiteQueen = new THREE.Object3D();
-	
-	whiteKing.id = "pleasefindme";
+	whiteKing = new THREE.Object3D();
 	whiteRook1 = new THREE.Object3D();
 	whiteRook2 = new THREE.Object3D();
 	whiteBishop1 = new THREE.Object3D();
 	whiteBishop2 = new THREE.Object3D();
 	whiteKnight1 = new THREE.Object3D();
 	whiteKnight2 = new THREE.Object3D();
+	ben = new THREE.Object3D();
 	
-	///initPieces('objects/queen.json', -10, 30, whiteQueen);
+	initPieces('objects/queen.json', -10, 30, whiteQueen);
 	initPieces('objects/king.json', 0, 30, whiteKing);
-	/*initPieces('objects/rook.json', -40, 30, whiteRook1, whiteRook2);
+	initPieces('objects/rook.json', -40, 30, whiteRook1, whiteRook2);
 	whiteRook2.translateX(30);
 	initPieces('objects/bishop.json', -20, 30, whiteBishop1, whiteBishop2);
 	//initPieces('objects/bishop.json', 10, 30, whiteBishop2);
 	whiteBishop2.translateX(10);
 	initPieces('objects/knight.json', -30, 30, whiteKnight1, whiteKnight2);
+	//initPieces('objects/kingBen.js', -30, 30, ben);
 	//initPieces('objects/knight.json', 20, 30, whiteKnight2);
 	whiteKnight2.translateX(20);
-	*/
-	//whiteKing.children[0].material.materials[0].map = THREE.ImageUtils.loadTexture( 'object/Textures/painted.png' );
-
-
-	//scene.add(whiteQueen);
-
+	
+	scene.add(whiteQueen);
 	scene.add(whiteKing);
-	//scene.add(whiteRook1);
-	//scene.add(whiteRook2);
-	//scene.add(whiteBishop1);
-	//scene.add(whiteBishop2);
-	//scene.add(whiteKnight1);
-	//scene.add(whiteKnight2);
-
-	console.log(scene.children[0].getObjectById(20));
+	scene.add(whiteRook1);
+	scene.add(whiteRook2);
+	scene.add(whiteBishop1);
+	scene.add(whiteBishop2);
+	scene.add(whiteKnight1);
+	scene.add(whiteKnight2);
+	scene.add(ben);
 	
-	var fuck = scene.children;
-	//console.log(whiteKing2);
-	//console.log(scene.children[0].children[0].material.materials[0].map.sourceFile);
-
-	//initWhitePawns();
+	initWhitePawns();
 	
-	//whitePawn1.translateZ(-20); //example move
+	whitePawn1.translateZ(-20); //example move
 
-	//console.log(whiteKing);
-	//console.log(whiteKing.mesh);
+	console.log(whiteQueen);
+	console.log(whiteQueen.children[0]);
 }
 
 //initializes all of the pawns.
@@ -98,12 +88,11 @@ function initPieces(objString, x, z, file, file1){
 
 		// Apply the modifier to our cloned geometry.
 		modifier.modify( smooth );
-		
+
 		
 		//var materialArray
 		//var vertexColorMaterial = new THREE.MeshBasicMaterial( { vertexColors: THREE.VertexColors } );
 		mesh = new THREE.Mesh( smooth, new THREE.MeshFaceMaterial( materials ) );
-
 		mesh.scale.set(4,4,4);
 		mesh.translateX(5); 
 		mesh.translateY(1);
@@ -111,17 +100,9 @@ function initPieces(objString, x, z, file, file1){
 
 		mesh.translateX(x);
 		mesh.translateZ(z);
-		mesh.id2 = "help";
 		//chessBoard.add( mesh );
-		//file.add( mesh );
 		file.add( mesh );
-		/*
-		console.log(objString);
-		console.log(file==whiteKing);
-		whiteKing2 = file;
-		console.log(whiteKing2);
-*/
-		//console.log(file.children[0].material.materials[0].map.sourceFile);
+		
 		if(file1  !== undefined)
 		{
 			//alert("meow");
@@ -133,7 +114,7 @@ function initPieces(objString, x, z, file, file1){
 			mesh.translateZ(z);
 			file1.add( mesh );
 		}
-	}, "objects/Textures/" );
+	}, 'objects/Textures' );
 }
 
 //makes the pawns using the passed in array. z is the row they should be in
@@ -168,5 +149,5 @@ function initPawnsHelper(objString, z, fileArray){
 			fileArray[i].add( mesh );
 		}
 		
-	},"objects/Textures/" );
+	}, 'objects/Textures' );
 }
