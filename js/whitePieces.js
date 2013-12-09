@@ -12,14 +12,14 @@ function initWhite(modelNumber)
 	//for handling the two sets of models.
 	if(modelNumber === 0)
 	{
-		initPieces('objects/queen.json', -10, 30, whiteQueen);
-		initPieces('objects/king.json', 0, 30, whiteKing);
-		initPieces('objects/rook.json', -40, 30, whiteRook1, whiteRook2);
+		initPieces('objects/Marble/queen.json', -10, 30, whiteQueen);
+		initPieces('objects/Marble/king.json', 0, 30, whiteKing);
+		initPieces('objects/Marble/rook.json', -40, 30, whiteRook1, whiteRook2);
 		whiteRook2.translateX(30);
-		initPieces('objects/bishop.json', -20, 30, whiteBishop1, whiteBishop2);
+		initPieces('objects/Marble/bishop.json', -20, 30, whiteBishop1, whiteBishop2);
 		//initPieces('objects/bishop.json', 10, 30, whiteBishop2);
 		whiteBishop2.translateX(10);
-		initPieces('objects/knight.json', -30, 30, whiteKnight1, whiteKnight2);
+		initPieces('objects/Marble/knight.json', -30, 30, whiteKnight1, whiteKnight2);
 		//initPieces('objects/knight.json', 20, 30, whiteKnight2);
 		whiteKnight2.translateX(20);
 	}
@@ -61,7 +61,7 @@ function initWhitePawns(modelNumber)
 	
 	if(modelNumber === 0) //same as above
 	{
-		initPawnsHelper('objects/pawn.json', 20, pawnArray); //initializes all of the pawns from the array
+		initPawnsHelper('objects/Marble/pawn.json', 20, pawnArray); //initializes all of the pawns from the array
 	}
 	else
 	{

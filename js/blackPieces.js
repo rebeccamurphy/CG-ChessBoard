@@ -12,13 +12,13 @@ function initBlack(modelNumber)
 	//for handling the two sets of models.
 	if(modelNumber === 0)
 	{
-		initPieces('objects/blackQueen.json', -10, -40, blackQueen);
-		initPieces('objects/blackKing.json', 0, -40, blackKing);
-		initPieces('objects/blackRook.json', -40, -40, blackRook1, blackRook2);
+		initPieces('objects/Marble/blackQueen.json', -10, -40, blackQueen);
+		initPieces('objects/Marble/blackKing.json', 0, -40, blackKing);
+		initPieces('objects/Marble/blackRook.json', -40, -40, blackRook1, blackRook2);
 		blackRook2.translateX(30);
-		initPieces('objects/blackBishop.json', -20, -40, blackBishop1, blackBishop2);
+		initPieces('objects/Marble/blackBishop.json', -20, -40, blackBishop1, blackBishop2);
 		blackBishop2.translateX(10);
-		initPieces('objects/blackKnight.json', -30, -40, blackKnight1, blackKnight2);
+		initPieces('objects/Marble/blackKnight.json', -30, -40, blackKnight1, blackKnight2);
 		blackKnight2.translateX(20);
 	}
 	else //more or less the same as what is in the if, but with the second set of file names.
@@ -59,7 +59,7 @@ function initBlackPawns(modelNumber)
 	
 	if(modelNumber === 0) //same as above
 	{
-		initPawnsHelper('objects/blackPawn.json', -30, pawnArray); //initializes all of the pawns from the array
+		initPawnsHelper('objects/Marble/blackPawn.json', -30, pawnArray); //initializes all of the pawns from the array
 	}
 	else
 	{

@@ -42,7 +42,7 @@ function initPieces(objString, x, z, file, file1){
 			mesh.translateZ(z);
 			file1.add( mesh );
 		}
-	} );
+	}, 'objects/Textures' );
 }
 
 //makes the pawns using the passed in array. z is the row they should be in
@@ -77,5 +77,5 @@ function initPawnsHelper(objString, z, fileArray){
 			fileArray[i].add( mesh );
 		}
 		
-	} );
+	}, 'objects/Textures' );
 }
