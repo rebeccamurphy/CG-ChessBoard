@@ -86,7 +86,7 @@ function animate() {
 	requestAnimationFrame( animate );
 	
 	//also include something about the animation not finishing/animating.
-	if(currentTurn !== lastTurn - 1 && count === 0) //change to || to test
+	if(currentTurn !== lastTurn && count === 0) //change to || to test
 	{
 		pieceMove();
 		cat = 1;

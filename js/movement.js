@@ -148,6 +148,62 @@ function pieceMove()
 			currentPiece.translateX(20);
 		}
 	}
+	else if(currentTurnString.substring(0,1) === "P" && (fpNumberToArray === 0 || fpNumberToArray === 7))//promotion check
+	{	
+		var newPieceChar = currentTurnString.substring(5,6);
+		if(currentTurn % 2 === 0) //check for color, this should be white
+		{
+			switch(newPieceChar)
+			{
+				case "Q":
+					var pieceObjString = 'objects/queen.json';
+					break;
+				case "N":
+					var pieceObjString = 'objects/knight.json';
+					break;
+				case "R":
+					var pieceObjString = 'objects/rook.json';
+					break;
+				case "B":
+					var pieceObjString = 'objects/bishop.json';
+					break;
+				default:
+					alert("Woops, someone's AI is broken...");
+					break;
+			}
+			scene.remove(currentPiece);
+			currentPiece = new THREE.Object3D();
+			var xToMove = (fpLetterToArray - 4) * 10;
+			initPieces(pieceObjString, xToMove, -40, currentPiece);
+			scene.add(currentPiece);
+		}
+		else
+		{
+			switch(newPieceChar)
+			{
+				case "Q":
+					var pieceObjString = 'objects/blackQueen.json';
+					break;
+				case "N":
+					var pieceObjString = 'objects/blackKnight.json';
+					break;
+				case "R":
+					var pieceObjString = 'objects/blackRook.json';
+					break;
+				case "B":
+					var pieceObjString = 'objects/blackBishop.json';
+					break;
+				default:
+					alert(":( someone's AI is broken...");
+					break;
+			}
+			scene.remove(currentPiece);
+			currentPiece = new THREE.Object3D();
+			var xToMove = (fpLetterToArray - 4) * 10;
+			initPieces(pieceObjString, xToMove, 30, currentPiece);
+			scene.add(currentPiece);
+		}
+	}
 	else //standard movement
 	{
 		//check if anything is in the final position
