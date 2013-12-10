@@ -151,12 +151,16 @@ function animate() {
 	}
 
 	}
-	if (gameid != "None" && jsonobj.gameOver==false)
+	if (gameid != "None"&& jsonobj.gameOver==false && currentTurn>= lastTurn)
 	{
 		jsonobj = getGame('https://10.11.18.65/cg/chess/' + gameid);
 		turnArray = jsonobj.moves;
 		lastTurn = jsonobj.lastmovenumber;
+		if (jsonobj.gameOver==false)
+			console.log('need a flage here.') //TOM can you put a flag here 
 	}
+	else
+		startGame = false;
 	
 	render();
 }
