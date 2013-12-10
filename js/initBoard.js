@@ -158,7 +158,7 @@ function animate() {
 		}
 
 	}
-	if (gameid != "None")
+	if (gameid != "None" && jsonobj.gameover !== false)
 	{
 		jsonobj = getGame('https://10.11.18.65/cg/chess/' + gameid);
 		turnArray = jsonobj.moves;
@@ -166,6 +166,13 @@ function animate() {
 	}
 	
 	if(restartGame === 1  && animationFlag === 0){
+		
+		if (gameid != "None")
+		{
+			jsonobj = getGame('https://10.11.18.65/cg/chess/' + gameid);
+			turnArray = jsonobj.moves;
+			lastTurn = jsonobj.lastmovenumber;
+		}
 		count = 500;
 		currentTurn = 0;
 		restartGame = 0;

@@ -69,9 +69,17 @@ var themeListener = guiGame.add(Options, 'theme').options('Classic Plain', 'Clas
 themeListener.onChange(function(value)
 {
   if (value == "Classic Plain")
+  {
     init('Plain');
+	modelKind = "Plain";
+  }
   else if (value == "Classic Marble")
+  {
     init('Marble');
+	modelKind = "Marble";
+  }
+  restartGame = 1;
+  count = 400;
 });
 
 var idListerner =  guiGame.add(Options, 'gameId');
