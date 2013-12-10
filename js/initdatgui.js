@@ -38,13 +38,20 @@ var guiOptions = function() {
                 this.theme = 'default';
                 this.gameId = 'None';
                 this.start = function(){
-                if (gameid != "None")
-                   jsonobj = getGame('https://10.11.18.65/cg/chess/' + gameid);
-                 //jsonobj = {"lastmovenumber": 17, "blacktime": 915.001665, "winner": 1, "gameover": true, "whitesturn": false, "moves": ["Pa2a4", "Pa7a6", "Pd2d4", "Pa6a5", "Qd1d2", "Pb7b6", "Qd2d3", "Pc7c6", "Qd3h7", "Pc6c5", "Qh7g8", "Pd7d6", "Qg8h8", "Pd6d5", "Qh8f8", "Pd5d4", "Qf8e8"], "whitetime": 909.452745}
+                if (buttonDisable == false)
+                {
+                  if (gameid != "None")
+                 //  jsonobj = getGame('https://10.11.18.65/cg/chess/' + gameid);
+                 jsonobj = {"lastmovenumber": 17, "blacktime": 915.001665, "winner": 1, "gameover": true, "whitesturn": false, "moves": ["Pa2a4", "Pa7a6", "Pd2d4", "Pa6a5", "Qd1d2", "Pb7b6", "Qd2d3", "Pc7c6", "Qd3h7", "Pc6c5", "Qh7g8", "Pd7d6", "Qg8h8", "Pd6d5", "Qh8f8", "Pd5d4", "Qf8e8"], "whitetime": 909.452745}
                  console.log(jsonobj);
                  turnArray = jsonobj.moves;
                  lastTurn = jsonobj.lastmovenumber;
                  startGame = true;
+                 buttonDisable = true;
+                 console.log(buttonDisable);
+                }
+                else 
+                  console.log('Wait for this game to be over, silly pants.');
                 }
 }
 var view = new guiView();
