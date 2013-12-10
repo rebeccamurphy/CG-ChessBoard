@@ -169,12 +169,13 @@ function animate() {
         {
                 if (jsonobj.gameOver === false && currentTurn >= lastTurn && animationFlag !== 1)
                 {
-                        if ( jsonobj.lastmovenumber == lastTurn && jsonobj.gameover == false)
+                        if ( jsonobj.lastmovenumber == currentTurn && jsonobj.gameover == false)
+                        {console.log('is getting to this if');
                                 setTimeout(function (){
                                     jsonobj = getGame('https://10.11.18.65/cg/chess/' + gameid);
                                     console.log('trying to get new moves from server.');
                                     if (jsonobj.moves != turnArray)
-                                        console.log('success!')
+                                        console.log('success!');
                                     else 
                                         console.log('hafta try again');
                                     turnArray = jsonobj.moves;
@@ -182,6 +183,7 @@ function animate() {
                                     updateTime();
 
                                 }, 5000);
+                        }
                
                 }
                 else if (jsonobj.gameover === true && currentTurn >= lastTurn &&  animationFlag !== 1)
