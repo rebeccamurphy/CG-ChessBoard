@@ -73,18 +73,22 @@ var guiOptions = function() {
                }
 			   this.evenSpeed = 26;
 }
-var view = new guiView();
-var guiCamera = new DAT.GUI({ autoPlace: false });
-              guiCamera.add(view, 'topView');
-              guiCamera.add(view, 'mouseControl');
-              guiCamera.add(view, 'flipPlayer');
-
 var Options = new guiOptions();
+var view = new guiView();
+
+var gui = new dat.GUI();
+
+var initOptions = gui.addFolder('Initialization');
+
+initOptions.add(Options, 'gameId');
+initOptions.add(Options, 'start');
 
 
-//var guiGame = new DAT.GUI({ autoPlace: false });
-var guiGame = new DAT.GUI();
-var themeListener = guiGame.add(Options, 'theme').options('Classic Plain', 'Classic Marble');
+
+
+var optionsGUI = gui.addFolder('Options');
+
+var themeListener = optionsGUI.add(Options, 'theme').options('Classic Plain', 'Classic Marble');
 themeListener.onChange(function(value)
 {
   if (value == "Classic Plain")
@@ -101,14 +105,9 @@ themeListener.onChange(function(value)
   count = 400;
 });
 
-var idListerner =  guiGame.add(Options, 'gameId');
-idListerner.onFinishChange(function(value){gameid = value;});
+optionsGUI.add(Options, 'restart');
 
-guiGame.add(Options, 'start');
-guiGame.add(Options, 'restart');
-
-//guiGame.add(Options, 'speed', 2, 50, 2).listen();
-var controller = guiGame.add(Options, 'evenSpeed', 2, 50, 2);
+var controller = optionsGUI.add(Options, 'evenSpeed', 2, 50).step(2);
 
 controller.onFinishChange(function(value){
 	if(value % 2 === 0)
@@ -123,3 +122,13 @@ controller.onFinishChange(function(value){
 		console.log("must be even. Wish I could put this somewhere you would notice...");
 	}
 });
+
+var cameraGUI = gui.addFolder('Camera Controls');
+
+cameraGUI.add(view, 'topView');
+cameraGUI.add(view, 'mouseControl');
+cameraGUI.add(view, 'flipPlayer');
+
+initOptions.open();
+optionsGUI.open();
+cameraGUI.open();
