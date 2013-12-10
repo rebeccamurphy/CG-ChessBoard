@@ -172,9 +172,13 @@ function animate() {
                         if ( jsonobj.lastmovenumber == lastTurn && jsonobj.gameover == false)
                                 setTimeout(function (){
                                     jsonobj = getGame('https://10.11.18.65/cg/chess/' + gameid);
+                                    console.log('trying to get new moves from server.');
+                                    if (jsonobj.moves != turnArray)
+                                        console.log('success!')
                                     turnArray = jsonobj.moves;
                                     lastTurn = jsonobj.lastmovenumber;
                                     updateTime();
+
                                 }, 5000);
                
                 }
