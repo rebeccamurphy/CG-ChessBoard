@@ -75,7 +75,7 @@ var Options = new guiOptions();
 
 //var guiGame = new DAT.GUI({ autoPlace: false });
 var guiGame = new DAT.GUI();
-var themeListener = guiGame.add(Options, 'theme').options('Classic Plain', 'Classic Marble');
+var themeListener = guiGame.add(Options, 'theme').options('Classic Plain', 'Classic Marble', 'Marist College');
 themeListener.onChange(function(value)
 {
   if (startGame == false)
@@ -91,6 +91,11 @@ themeListener.onChange(function(value)
       init('Marble');
       modelKind = 'Marble';
     }  
+  else if (value == 'Marist College')
+    {
+      init('Faculty')
+      modelKind = 'Faculty';
+    }
   restartGame = 1;
   count = 400;
   }
