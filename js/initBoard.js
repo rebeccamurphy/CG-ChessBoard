@@ -168,14 +168,17 @@ function animate() {
         if (gameid !== "None" && startGame === true)
         {
                 if (jsonobj.gameover === false && currentTurn >= lastTurn && animationFlag !== 1)
-                {
+                {//so this should check if there are any new moves from the server, though is is
+                    //looping 30 times a second, the delay only works to offset each call to the server by 5 seconds
+                    //we could put a count inthat would make it only execute every 90 frames or so, which would be every 3 seconds i think?
+                    //the current game on the server is 720 at 2pm
                         
                                 console.log('is getting to this if');
                                 setTimeout(function (){
                                     jsonobj = getGame('https://10.11.18.65/cg/chess/' + gameid);
                                     console.log('trying to get new moves from server.');
                                     if (jsonobj.moves.length > turnArray.length)
-                                        {
+                                        { // is jsonobj is different do this stuff. 
                                             console.log('success!');
                                               turnArray = jsonobj.moves;
                                             lastTurn = jsonobj.lastmovenumber;
