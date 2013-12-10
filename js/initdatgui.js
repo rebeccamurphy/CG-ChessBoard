@@ -65,16 +65,13 @@ var guiOptions = function() {
                  buttonDisable = true;
                  console.log(buttonDisable);
                }
-                else 
-                  console.log('Wait for this game to be over, silly pants.');
-                }
-				this.restart = function(){
-                  restartGame = 1;
-                }
-				this.speed = function(){
-				  animationFramesChange = 1;
-                  deltaAnimation;
-                }
+               else 
+                 console.log('Wait for this game to be over, silly pants.');
+               }
+			   this.restart = function(){
+                 restartGame = 1;
+               }
+			   this.evenSpeed = 26;
 }
 var view = new guiView();
 var guiCamera = new DAT.GUI({ autoPlace: false });
@@ -110,4 +107,19 @@ idListerner.onFinishChange(function(value){gameid = value;});
 guiGame.add(Options, 'start');
 guiGame.add(Options, 'restart');
 
-//guiGame.add(Options, "speed", 2, 50);
+//guiGame.add(Options, 'speed', 2, 50, 2).listen();
+var controller = guiGame.add(Options, 'evenSpeed', 2, 50, 2);
+
+controller.onFinishChange(function(value){
+	if(value % 2 === 0)
+	{
+	  animationFramesChange = 1;
+	  //alert(deltaAnimation);
+	  deltaAnimation = value;
+	  //alert(deltaAnimation);
+	}
+	else
+	{
+		console.log("must be even. Wish I could put this somewhere you would notice...");
+	}
+});

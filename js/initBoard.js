@@ -10,7 +10,7 @@ function init(modelKind) {
 		document.addEventListener( 'mousemove', onDocumentMouseMove, false );
 		window.addEventListener( 'resize', onWindowResize, false );
 		window.addEventListener('keypress', function (e) {
-                    if (e.keyCode==13) {
+                    if (e.keyCode==16) {
                     	console.log('x: ' + camera.position.x + 'y: '+  camera.position.y + 'z: ' +camera.position.x);
                         mousemove = !mousemove;
                     				}
@@ -127,7 +127,7 @@ function animate() {
                 count -= 10;
                 //update the json pulled from the server here, and the array, and the last turn number.
                 
-                if(animationFlag === 1 && animationFramesChange === 0)
+                if(animationFlag === 1)
                 {
                         if(animateCount < animationFrames / 2) //rise
                         {
