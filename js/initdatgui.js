@@ -62,6 +62,7 @@ var guiOptions = function() {
                }
          this.restart = function(){
                  restartGame = 1;
+				 count = 400;
                }
          this.evenSpeed = 26;
 }
