@@ -38,8 +38,8 @@ var guiOptions = function() {
                 this.theme = 'default';
                 this.gameId = 'None';
                 this.start = function(){
-                  console.log('this would start the game.');
-                  console.log(gameid);
+                  if (gameid != "None")
+                   jsonobj = getGame('https://10.11.18.65/cg/chess/' + gameid);
                   startGame = true;
                 }
 }
