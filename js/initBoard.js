@@ -165,24 +165,24 @@ function animate() {
 
         }
 
-        if (gameid != "None" && startGame ==true)
+        if (gameid !== "None" && startGame === true)
         {
-                if (jsonobj.gameOver==false && currentTurn>= lastTurn &&animationFlag != 1)
+                if (jsonobj.gameOver === false && currentTurn >= lastTurn && animationFlag !== 1)
                 {
-                        while( jsonobj.lastmovenumber == lastTurn && jsonobj.gameover == false)
+                        while( jsonobj.lastmovenumber === lastTurn && jsonobj.gameover === false)
                                 jsonobj = getGame('https://10.11.18.65/cg/chess/' + gameid);
                 turnArray = jsonobj.moves;
                 lastTurn = jsonobj.lastmovenumber;
                 updateTime();
                 }
-                else if (jsonobj.gameover==true &&currentTurn>= lastTurn &&  animationFlag != 1)
-                        {
-                         startGame = false;
-                         if (jsonobj.winner ==1)
-                         	alert("White Won!");
-                         else
-                         	alert("Black Won!");
-               			}
+                else if (jsonobj.gameover === true && currentTurn >= lastTurn &&  animationFlag !== 1)
+				{
+					startGame = false;
+					if (jsonobj.winner ==1)
+						alert("White Won!");
+					else
+						alert("Black Won!");
+				}
         }       
         
         if(restartGame === 1  && animationFlag === 0){
@@ -196,6 +196,7 @@ function animate() {
                 count = 500;
                 currentTurn = 0;
                 restartGame = 0;
+				startGame = true;
 				updateTime();
                 init(modelKind);
                 animate();
