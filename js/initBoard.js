@@ -151,7 +151,7 @@ function animate() {
 	}
 
 	}
-	if (gameid != "None" && jsonobj.gameOver!=false)
+	if (gameid != "None" && jsonobj.gameOver==false)
 	{
 		jsonobj = getGame('https://10.11.18.65/cg/chess/' + gameid);
 		turnArray = jsonobj.moves;
