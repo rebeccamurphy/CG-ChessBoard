@@ -1,9 +1,11 @@
+var secondload = false;
 function init(modelKind) {
 	//these if-else are for reloading the board with a different texture. 
 	if (document.getElementById('boardcontainer') !=null)
 	{
   		var olddiv = document.getElementById('boardcontainer');
   		olddiv.parentNode.removeChild(olddiv);
+  		secondload = true;
 	}
 	else
 	{
@@ -15,15 +17,16 @@ function init(modelKind) {
                         mousemove = !mousemove;
                     				}
 
-                                                }, false);  
+                                                }, false); 
+        camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 1000 );
+    //    camera = new THREE.OrthographicCamera( window.innerWidth / - 2, window.innerWidth / 2, window.innerHeight / 2, window.innerHeight / - 2, 1, 1000  );
+        camera.position.z = 50;
+        camera.position.y = 120;
 	}
 	container = document.createElement( 'div' );
 	container.setAttribute("id", "boardcontainer");
 	document.body.appendChild( container );
- 	camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 1000 );
-    //    camera = new THREE.OrthographicCamera( window.innerWidth / - 2, window.innerWidth / 2, window.innerHeight / 2, window.innerHeight / - 2, 1, 1000  );
-        camera.position.z = 50;
-        camera.position.y = 120;
+ 	
 
 	// scene
 
@@ -214,8 +217,11 @@ function render() {
         	if (camera.position.y ==125)
         		topview = false;
      }
+    if (secondload == false)
+   	{ 	
 	camera.lookAt( scene.position );
 	renderer.render( scene, camera );
+	}
 	controls.update()
 
 }
