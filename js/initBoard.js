@@ -175,6 +175,8 @@ function animate() {
                                     console.log('trying to get new moves from server.');
                                     if (jsonobj.moves != turnArray)
                                         console.log('success!')
+                                    else 
+                                        console.log('hafta try again');
                                     turnArray = jsonobj.moves;
                                     lastTurn = jsonobj.lastmovenumber;
                                     updateTime();
