@@ -179,6 +179,7 @@ function animate() {
 				{
 					startGame = false;
 					buttonDisable = false;
+					startException = 1;
 					if (jsonobj.winner ==1)
 						alert("White Won!");
 					else
@@ -195,9 +196,10 @@ function animate() {
                     lastTurn = jsonobj.lastmovenumber;
                 }
                 count = 500;
-				if(currentTurn > 0)
+				if(currentTurn > 0 || startException === 1)
 				{
 					startGame = true;
+					startException = 0;
 				}
                 currentTurn = 0;
                 restartGame = 0;

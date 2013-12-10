@@ -51,8 +51,16 @@ var guiOptions = function() {
                  
                  turnArray = jsonobj.moves;
                  lastTurn = jsonobj.lastmovenumber;
-                 startGame = true;
-                 buttonDisable = true;
+				 if(startException === 1)
+				 {
+					restartGame = 1;
+					count = 400;
+				}
+				else
+				{ 
+					startGame = true;
+                }
+				 buttonDisable = true;
                  updateMoveHTML();
                  updateTime();
                  //document.getElementById('MOVE').innerHTML = "White Time: " + jsonobj.whitetime;
@@ -64,7 +72,7 @@ var guiOptions = function() {
                  restartGame = 1;
 				 count = 400;
                }
-         this.evenSpeed = 26;
+         this.evenSpeed = 30;
 }
 var Options = new guiOptions();
 var view = new guiView();
