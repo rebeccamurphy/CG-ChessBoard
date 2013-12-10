@@ -148,7 +148,7 @@ function pieceMove()
 	else if(currentTurnString.substring(0,1) === "P" && (fpNumberToArray === 0 || fpNumberToArray === 7))//promotion check
 	{	
 		var newPieceChar = currentTurnString.substring(5,6);
-		if(modelNumber === 0) //check for set
+		if(modelKind === 0) //check for set
 		{
 			if(currentTurn % 2 === 0) //check for color, this should be white
 			{

@@ -49,7 +49,8 @@ function init(modelKind) {
 
         scene.add( spotLight );
 
-	// model
+	// 
+
 	chessBoard = new THREE.Object3D(); //group node
 
 	var loader = new THREE.OBJMTLLoader(); //chess board files here, you could easily rename them
@@ -154,15 +155,16 @@ function animate() {
 	
 	if (gameid != "None" && startGame ==true)
 	{
-		if (jsonobj.gameOver==false && currentTurn>= lastTurn)
+		if (jsonobj.gameOver==false && currentTurn>= lastTurn &&animationFlag != 1)
 		{
 		jsonobj = getGame('https://10.11.18.65/cg/chess/' + gameid);
 		turnArray = jsonobj.moves;
 		lastTurn = jsonobj.lastmovenumber;
 		}
-		if (jsonobj.gameover==true &&currentTurn>= lastTurn )
-			{ //TOM can you put a flag here  
-			 startGame = false;}
+		else if (jsonobj.gameover==true &&currentTurn>= lastTurn &&  animationFlag != 1)
+			{
+			 startGame = false;
+			}
 	}
 	
 	
