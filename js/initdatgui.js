@@ -40,6 +40,7 @@ var guiOptions = function() {
                 this.start = function(){
                   console.log('this would start the game.');
                   console.log(gameid);
+                  jsonobj = getGame('https://10.11.18.65/cg/chess/' + gameid);
                   startGame = true;
                 }
 				this.restart = function(){
