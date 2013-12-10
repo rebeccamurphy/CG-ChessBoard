@@ -118,37 +118,44 @@ function animate() {
 	// TOM I COMMENTED THIS OUT MOMENTARILY. 
 	//also include something about the animation not finishing/animating.
 	if (startGame==true){
-	if(currentTurn !== lastTurn && count === 0 && animationFlag === 0) //change to || to test
-	{
-		pieceMove();
-		//count = 200;
-	}
-	count -= 10;
-	//update the json pulled from the server here, and the array, and the last turn number.
-	
-	if(animationFlag === 1)
-	{
-		if(animateCount < 5) //rise
+		if(currentTurn !== lastTurn && count === 0 && animationFlag === 0) //change to || to test
 		{
-			currentPieceExternal.translateX(moveXtransition / 10);
-			currentPieceExternal.translateZ(moveZtransition / 10);
-			currentPieceExternal.translateY(3);
-			animateCount++;
+			pieceMove();
+			//count = 200;
 		}
-		else if(animateCount < 10) //fall
+		count -= 10;
+		//update the json pulled from the server here, and the array, and the last turn number.
+		
+		if(animationFlag === 1 && animationFramesChange === 0)
 		{
-			currentPieceExternal.translateX(moveXtransition / 10);
-			currentPieceExternal.translateZ(moveZtransition / 10);
-			currentPieceExternal.translateY(-3);
-			animateCount++;
+			if(animateCount < animationFrames / 2) //rise
+			{
+				currentPieceExternal.translateX(moveXtransition / animationFrames);
+				currentPieceExternal.translateZ(moveZtransition / animationFrames);
+				currentPieceExternal.translateY(1);
+				animateCount++;
+			}
+			else if(animateCount < animationFrames) //fall
+			{
+				currentPieceExternal.translateX(moveXtransition / animationFrames);
+				currentPieceExternal.translateZ(moveZtransition / animationFrames);
+				currentPieceExternal.translateY(-1);
+				animateCount++;
+			}
+			else //wrap up
+			{
+				animationFlag = 0;
+				animateCount = 0;
+				count = 0;
+			}
 		}
-		else //wrap up
+		
+		//change the speed after the current animation has finished... not sure how though, as datGUI
+		if(animationFramesChange === 1 && animationFlag === 0)
 		{
-			animationFlag = 0;
-			animateCount = 0;
-			count = 0;
+			animationFrames = deltaAnimation; //deltaAnimation
+			animationFramesChange = 0;
 		}
-	}
 
 	}
 	if (gameid != "None")
