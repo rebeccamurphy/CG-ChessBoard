@@ -57,38 +57,44 @@ var guiOptions = function() {
                  updateTime();
                  //document.getElementById('MOVE').innerHTML = "White Time: " + jsonobj.whitetime;
                }
-                else 
-                  console.log('Wait for this game to be over, silly pants.');
-                }
-				this.restart = function(){
-                  restartGame = 1;
-                }
+               else 
+                 console.log('Wait for this game to be over, silly pants.');
+               }
+			   this.restart = function(){
+                 restartGame = 1;
+               }
+			   this.evenSpeed = 26;
 }
-var view = new guiView();
-var guiCamera = new DAT.GUI({ autoPlace: false });
-              guiCamera.add(view, 'topView');
-              guiCamera.add(view, 'mouseControl');
-              guiCamera.add(view, 'flipPlayer');
-
 var Options = new guiOptions();
+var view = new guiView();
+
+var gui = new dat.GUI();
+
+var initOptions = gui.addFolder('Initialization');
+
+initOptions.add(Options, 'gameId');
+initOptions.add(Options, 'start');
 
 
-//var guiGame = new DAT.GUI({ autoPlace: false });
-var guiGame = new DAT.GUI();
+
+
+
+var optionsGUI = gui.addFolder('Options');
+
 var themeListener = guiGame.add(Options, 'theme').options('Classic Plain', 'Classic Marble', 'Marist College');
+
 themeListener.onChange(function(value)
 {
   if (startGame == false)
   {
   if (value == "Classic Plain")
-
     {
-      init('Plain');
+      //init('Plain');
       modelKind = 'Plain';
     }
   else if (value == "Classic Marble")
     {
-      init('Marble');
+      //init('Marble');
       modelKind = 'Marble';
     }  
   else if (value == 'Marist College')
@@ -101,8 +107,30 @@ themeListener.onChange(function(value)
   }
 });
 
-var idListerner =  guiGame.add(Options, 'gameId');
-idListerner.onFinishChange(function(value){gameid = value;});
+optionsGUI.add(Options, 'restart');
 
-guiGame.add(Options, 'start');
-guiGame.add(Options, 'restart');
+var controller = optionsGUI.add(Options, 'evenSpeed', 2, 50).step(2);
+
+controller.onFinishChange(function(value){
+	if(value % 2 === 0)
+	{
+	  animationFramesChange = 1;
+	  //alert(deltaAnimation);
+	  deltaAnimation = value;
+	  //alert(deltaAnimation);
+	}
+	else
+	{
+		console.log("must be even. Wish I could put this somewhere you would notice...");
+	}
+});
+
+var cameraGUI = gui.addFolder('Camera Controls');
+
+cameraGUI.add(view, 'topView');
+cameraGUI.add(view, 'mouseControl');
+cameraGUI.add(view, 'flipPlayer');
+
+initOptions.open();
+optionsGUI.open();
+cameraGUI.open();
