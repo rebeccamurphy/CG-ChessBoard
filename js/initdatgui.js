@@ -72,7 +72,7 @@ var guiOptions = function() {
                  restartGame = 1;
 				 count = 400;
                }
-         this.evenSpeed = 30;
+         this.evenSpeed = 26;
 }
 var Options = new guiOptions();
 var view = new guiView();
@@ -123,7 +123,7 @@ controller.onFinishChange(function(value){
   {
     animationFramesChange = 1;
     //alert(deltaAnimation);
-    deltaAnimation = value;
+    deltaAnimation = 52 - value;
     //alert(deltaAnimation);
   }
   else
