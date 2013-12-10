@@ -22,7 +22,7 @@ function init(modelKind) {
     //    camera = new THREE.OrthographicCamera( window.innerWidth / - 2, window.innerWidth / 2, window.innerHeight / 2, window.innerHeight / - 2, 1, 1000  );
         camera.position.z = 50;
         camera.position.y = 120;
-        controls = new THREE.OrbitControls(camera, renderer.domElement);
+
 	}
 	container = document.createElement( 'div' );
 	container.setAttribute("id", "boardcontainer");
@@ -73,7 +73,7 @@ function init(modelKind) {
 	renderer = new THREE.WebGLRenderer();
 	renderer.setSize( window.innerWidth, window.innerHeight );
 	container.appendChild( renderer.domElement );
-
+	controls = new THREE.OrbitControls(camera, renderer.domElement);
 	
 
 
