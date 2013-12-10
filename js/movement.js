@@ -147,6 +147,11 @@ function pieceMove()
 	}
 	else if(currentTurnString.substring(0,1) === "P" && (fpNumberToArray === 0 || fpNumberToArray === 7))//promotion check
 	{	
+		if(boardArray[fpLetterToArray][fpNumberToArray][0] !== 0)
+		{
+			//most likely a placeholder, though we shall see...
+			scene.remove(boardArray[fpLetterToArray][fpNumberToArray][1]);
+		}
 		var newPieceChar = currentTurnString.substring(5,6);
 
 		if(currentTurn % 2 === 0) //check for color, this should be white
@@ -201,6 +206,10 @@ function pieceMove()
 			initPieces(pieceObjString, xToMove, 30, currentPiece);
 			scene.add(currentPiece);
 		}
+		moveXtransition = 0;
+		moveZtransition = 0;
+		boardArray[fpLetterToArray][fpNumberToArray] = [1, currentPiece];
+		boardArray[ipLetterToArray][ipNumberToArray] = [0, "notAPiece"];
 	}
 	else if(currentTurnString.substring(0,1) === "P" && ipLetterToArray !== fpLetterToArray && boardArray[fpLetterToArray][fpNumberToArray][0] === 0)//en passant
 	{	
