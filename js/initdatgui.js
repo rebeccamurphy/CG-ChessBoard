@@ -7,7 +7,7 @@ var guiView = function() {
                     console.log('Mouse Loc x: ' + camera.position.x + 'y: '+  camera.position.y + 'z: ' +camera.position.z);
                     };
             this.topView = function() {
-            		//camera = new THREE.PerspectiveCamera( 20, window.innerWidth / window.innerHeight, 1, 1000 );
+                //camera = new THREE.PerspectiveCamera( 20, window.innerWidth / window.innerHeight, 1, 1000 );
                console.log(top);
               // if (topview==false)
                {
@@ -15,7 +15,7 @@ var guiView = function() {
                 //camera.fov = 20;
                 console.log(camera.fov);
                 camera.position.y=150;
-          			camera.position.z = 0;
+                camera.position.z = 0;
                 camera.position.x = 0;
                 //xinc = camera.position.x /1000;
                 //zinc = camera.position.x / 1000;
@@ -23,7 +23,7 @@ var guiView = function() {
                 console.log('x: ' + camera.position.x + ' y: '+  camera.position.y + ' z: ' +camera.position.z);
                 //camera.position.x = -2;
                 //topview = true;
-         				mousemove = false;
+                mousemove = false;
 
               }
                     };
@@ -60,10 +60,10 @@ var guiOptions = function() {
                else 
                  console.log('Wait for this game to be over, silly pants.');
                }
-			   this.restart = function(){
+         this.restart = function(){
                  restartGame = 1;
                }
-			   this.evenSpeed = 26;
+         this.evenSpeed = 26;
 }
 var Options = new guiOptions();
 var view = new guiView();
@@ -78,15 +78,11 @@ initOptions.add(Options, 'start');
 
 
 
-
 var optionsGUI = gui.addFolder('Options');
 
-var themeListener = guiGame.add(Options, 'theme').options('Classic Plain', 'Classic Marble', 'Marist College');
-
+var themeListener = optionsGUI.add(Options, 'theme').options('Classic Plain', 'Classic Marble', "Marist College");
 themeListener.onChange(function(value)
 {
-  if (startGame == false)
-  {
   if (value == "Classic Plain")
     {
       //init('Plain');
@@ -96,15 +92,13 @@ themeListener.onChange(function(value)
     {
       //init('Marble');
       modelKind = 'Marble';
-    }  
-  else if (value == 'Marist College')
-    {
-      init('Faculty')
-      modelKind = 'Faculty';
     }
+  else if (value == "Marist College")
+  {
+    modelKind = 'Faculty';
+  }  
   restartGame = 1;
   count = 400;
-  }
 });
 
 optionsGUI.add(Options, 'restart');
@@ -112,17 +106,17 @@ optionsGUI.add(Options, 'restart');
 var controller = optionsGUI.add(Options, 'evenSpeed', 2, 50).step(2);
 
 controller.onFinishChange(function(value){
-	if(value % 2 === 0)
-	{
-	  animationFramesChange = 1;
-	  //alert(deltaAnimation);
-	  deltaAnimation = value;
-	  //alert(deltaAnimation);
-	}
-	else
-	{
-		console.log("must be even. Wish I could put this somewhere you would notice...");
-	}
+  if(value % 2 === 0)
+  {
+    animationFramesChange = 1;
+    //alert(deltaAnimation);
+    deltaAnimation = value;
+    //alert(deltaAnimation);
+  }
+  else
+  {
+    console.log("must be even. Wish I could put this somewhere you would notice...");
+  }
 });
 
 var cameraGUI = gui.addFolder('Camera Controls');
