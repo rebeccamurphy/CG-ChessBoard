@@ -148,63 +148,58 @@ function pieceMove()
 	else if(currentTurnString.substring(0,1) === "P" && (fpNumberToArray === 0 || fpNumberToArray === 7))//promotion check
 	{	
 		var newPieceChar = currentTurnString.substring(5,6);
-		if(modelNumber === 0) //check for set
+
+		if(currentTurn % 2 === 0) //check for color, this should be white
 		{
-			if(currentTurn % 2 === 0) //check for color, this should be white
+			switch(newPieceChar)
 			{
-				switch(newPieceChar)
-				{
-					case "Q":
-						var pieceObjString = 'objects/queen.json';
-						break;
-					case "N":
-						var pieceObjString = 'objects/knight.json';
-						break;
-					case "R":
-						var pieceObjString = 'objects/rook.json';
-						break;
-					case "B":
-						var pieceObjString = 'objects/bishop.json';
-						break;
-					default:
-						alert("Woops, someone's AI is broken...");
-						break;
-				}
-				scene.remove(currentPiece);
-				currentPiece = new THREE.Object3D();
-				var xToMove = (fpLetterToArray - 4) * 10;
-				initPieces(pieceObjString, xToMove, -40, currentPiece);
-				scene.add(currentPiece);
+				case "Q":
+					var pieceObjString = 'objects/'+ modelKind +'/queen.json';
+					break;
+				case "N":
+					var pieceObjString = 'objects/'+ modelKind +'/knight.json';
+					break;
+				case "R":
+					var pieceObjString = 'objects/'+ modelKind +'/rook.json';
+					break;
+				case "B":
+					var pieceObjString = 'objects/'+ modelKind +'/bishop.json';
+					break;
+				default:
+					alert("Woops, someone's AI is broken...");
+					break;
 			}
-			else
-			{
-				switch(newPieceChar)
-				{
-					case "Q":
-						var pieceObjString = 'objects/blackQueen.json';
-						break;
-					case "N":
-						var pieceObjString = 'objects/blackKnight.json';
-						break;
-					case "R":
-						var pieceObjString = 'objects/blackRook.json';
-						break;
-					case "B":
-						var pieceObjString = 'objects/blackBishop.json';
-						break;
-					default:
-						alert(":( someone's AI is broken...");
-						break;
-				}
-				scene.remove(currentPiece);
-				currentPiece = new THREE.Object3D();
-				var xToMove = (fpLetterToArray - 4) * 10;
-				initPieces(pieceObjString, xToMove, 30, currentPiece);
-				scene.add(currentPiece);
-			}
+			scene.remove(currentPiece);
+			currentPiece = new THREE.Object3D();
+			var xToMove = (fpLetterToArray - 4) * 10;
+			initPieces(pieceObjString, xToMove, -40, currentPiece);
+			scene.add(currentPiece);
 		}
-		else //second set of pieces if implemented
+		else
 		{
+			switch(newPieceChar)
+			{
+				case "Q":
+					var pieceObjString = 'objects/'+ modelKind +'/blackQueen.json';
+					break;
+				case "N":
+					var pieceObjString = 'objects/'+ modelKind +'/blackKnight.json';
+					break;
+				case "R":
+					var pieceObjString = 'objects/'+ modelKind +'/blackRook.json';
+					break;
+				case "B":
+					var pieceObjString = 'objects/'+ modelKind +'/blackBishop.json';
+					break;
+				default:
+					alert(":( someone's AI is broken...");
+					break;
+			}
+			scene.remove(currentPiece);
+			currentPiece = new THREE.Object3D();
+			var xToMove = (fpLetterToArray - 4) * 10;
+			initPieces(pieceObjString, xToMove, 30, currentPiece);
+			scene.add(currentPiece);
 		}
 	}
 	else if(currentTurnString.substring(0,1) === "P" && ipLetterToArray !== fpLetterToArray && boardArray[fpLetterToArray][fpNumberToArray][0] === 0)//en passant
