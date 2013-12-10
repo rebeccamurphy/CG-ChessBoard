@@ -161,6 +161,7 @@ function animate() {
                         animationFrames = deltaAnimation; //deltaAnimation
                         animationFramesChange = 0;
                 }
+		updateTime();
 
         }
 
@@ -195,10 +196,11 @@ function animate() {
                 count = 500;
                 currentTurn = 0;
                 restartGame = 0;
+				updateTime();
                 init(modelKind);
                 animate();
         }
-        
+		
         render();
 }
 
