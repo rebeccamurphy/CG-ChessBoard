@@ -110,14 +110,14 @@
 			var xinc =0, yinc =0, zinc =0;
 
 			var controls = null;
-
+			var timeId = "";
 
 			window.onload =function(){
 			init(modelKind); 
 			//document.getElementById('GameOptions').appendChild(guiGame.domElement);
 			//document.getElementById('Camera').appendChild(guiCamera.domElement);
 			
-			
+
 			animate();
 
 
@@ -128,6 +128,7 @@
 		</script>
 
 	</body>
-	<div id = "btime" style =  "color:#000000">Black time</div>
-	<div id = "wtime">White time</div>
+	<div id = 'MOVE'> <b>Move:  </b>  </div>
+	<div id = "TIME" ><b> White time: </b> &nbsp&nbsp <b style =  "color:#000000"> Black time: </b></div>
+	
 </html>

@@ -172,6 +172,7 @@ function animate() {
                                 jsonobj = getGame('https://10.11.18.65/cg/chess/' + gameid);
                 turnArray = jsonobj.moves;
                 lastTurn = jsonobj.lastmovenumber;
+                updateTime();
                 }
                 else if (jsonobj.gameover==true &&currentTurn>= lastTurn &&  animationFlag != 1)
                         {
@@ -208,6 +209,7 @@ function render() {
         { camera.position.x += ( mouseX - camera.position.x ) * .05;
           camera.position.y += ( - mouseY - camera.position.y ) * .05;
         }
+     /*   
      if (topview == true)
      { console.log(top);
      		camera.position.z+= (zinc *-1);
@@ -218,7 +220,7 @@ function render() {
         	if (camera.position.y ==125)
         		topview = false;
      }
-
+	*/
 	camera.lookAt( scene.position );
 	renderer.render( scene, camera );
 

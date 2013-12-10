@@ -278,4 +278,19 @@ function pieceMove()
 	
 	animationFlag = 1;
 	currentTurn++;
+	updateMoveHTML();
+}
+
+function updateTime(){
+	timeId = "<b> White time: " + jsonobj.whitetime +"<b>" +" &nbsp&nbsp<b style =  \"color:#000000\"> Black time: " + jsonobj.blacktime + "</b>";
+    document.getElementById('TIME').innerHTML = timeId;
+}
+
+function updateMoveHTML(){
+	var text = "";
+	if (currentTurn %2 ==0)
+	text = "<b style = \"color:#000000\">Move: "+ currentTurn + "</b> </div>";
+	else
+	text = "<b>Move: "+ currentTurn + "</b> </div>";
+	document.getElementById('MOVE').innerHTML = text;
 }

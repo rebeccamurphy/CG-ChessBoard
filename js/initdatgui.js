@@ -9,7 +9,7 @@ var guiView = function() {
             this.topView = function() {
             		//camera = new THREE.PerspectiveCamera( 20, window.innerWidth / window.innerHeight, 1, 1000 );
                console.log(top);
-               if (topview==false)
+              // if (topview==false)
                {
                 console.log(camera);
                 //camera.fov = 20;
@@ -53,8 +53,9 @@ var guiOptions = function() {
                  lastTurn = jsonobj.lastmovenumber;
                  startGame = true;
                  buttonDisable = true;
-                 document.getElementById('btime').innerHTML = "Black Time: " + jsonobj.blacktime;
-                 document.getElementById('wtime').innerHTML = "White Time: " + jsonobj.whitetime;
+                 updateMoveHTML();
+                 updateTime();
+                 //document.getElementById('MOVE').innerHTML = "White Time: " + jsonobj.whitetime;
                }
                 else 
                   console.log('Wait for this game to be over, silly pants.');
