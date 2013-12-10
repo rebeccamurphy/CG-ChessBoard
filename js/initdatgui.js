@@ -71,6 +71,10 @@ var guiOptions = function() {
 				this.restart = function(){
                   restartGame = 1;
                 }
+				this.speed = function(){
+				  animationFramesChange = 1;
+                  deltaAnimation;
+                }
 }
 var view = new guiView();
 var guiCamera = new DAT.GUI({ autoPlace: false });
@@ -87,14 +91,13 @@ var themeListener = guiGame.add(Options, 'theme').options('Classic Plain', 'Clas
 themeListener.onChange(function(value)
 {
   if (value == "Classic Plain")
-
     {
-      init('Plain');
+      //init('Plain');
       modelKind = 'Plain';
     }
   else if (value == "Classic Marble")
     {
-      init('Marble');
+      //init('Marble');
       modelKind = 'Marble';
     }  
   restartGame = 1;
@@ -106,3 +109,5 @@ idListerner.onFinishChange(function(value){gameid = value;});
 
 guiGame.add(Options, 'start');
 guiGame.add(Options, 'restart');
+
+//guiGame.add(Options, "speed", 2, 50);
