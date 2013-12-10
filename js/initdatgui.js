@@ -73,7 +73,11 @@ var gui = new dat.GUI();
 
 var initOptions = gui.addFolder('Initialization');
 
-initOptions.add(Options, 'gameId');
+var controllerGameId = initOptions.add(Options, 'gameId');
+controllerGameId.onFinishChange(function(value){
+  gameid = value;
+});
+
 initOptions.add(Options, 'start');
 
 
