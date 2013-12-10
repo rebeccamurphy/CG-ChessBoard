@@ -122,7 +122,7 @@ function animate() {
         requestAnimationFrame( animate );
         // TOM I COMMENTED THIS OUT MOMENTARILY. 
         //also include something about the animation not finishing/animating.
-        if (startGame==true && jsonobj!=null){
+        if (startGame == true && jsonobj !== null){
                 if(currentTurn !== lastTurn && count === 0 && animationFlag === 0) //change to || to test
                 {
                         pieceMove();
@@ -161,7 +161,7 @@ function animate() {
                         animationFrames = deltaAnimation; //deltaAnimation
                         animationFramesChange = 0;
                 }
-		updateTime();
+				updateTime();
 
         }
 
@@ -178,6 +178,7 @@ function animate() {
                 else if (jsonobj.gameover === true && currentTurn >= lastTurn &&  animationFlag !== 1)
 				{
 					startGame = false;
+					buttonDisable = false;
 					if (jsonobj.winner ==1)
 						alert("White Won!");
 					else
@@ -187,17 +188,20 @@ function animate() {
         
         if(restartGame === 1  && animationFlag === 0){
                 
-                if (gameid != "None")
+                if (gameid !== "None")
                 {
-                        jsonobj = getGame('https://10.11.18.65/cg/chess/' + gameid);
-                        turnArray = jsonobj.moves;
-                        lastTurn = jsonobj.lastmovenumber;
+                    jsonobj = getGame('https://10.11.18.65/cg/chess/' + gameid);
+                    turnArray = jsonobj.moves;
+                    lastTurn = jsonobj.lastmovenumber;
                 }
                 count = 500;
+				if(currentTurn > 0)
+				{
+					startGame = true;
+				}
                 currentTurn = 0;
                 restartGame = 0;
-				startGame = true;
-				updateTime();
+				//startGame = true;
                 init(modelKind);
                 animate();
         }
