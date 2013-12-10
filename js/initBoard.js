@@ -169,11 +169,14 @@ function animate() {
         {
                 if (jsonobj.gameOver === false && currentTurn >= lastTurn && animationFlag !== 1)
                 {
-                        while( jsonobj.lastmovenumber === lastTurn && jsonobj.gameover === false)
-                                jsonobj = getGame('https://10.11.18.65/cg/chess/' + gameid);
-                turnArray = jsonobj.moves;
-                lastTurn = jsonobj.lastmovenumber;
-                updateTime();
+                        if ( jsonobj.lastmovenumber == lastTurn && jsonobj.gameover == false)
+                                setTimeout(function (){
+                                    jsonobj = getGame('https://10.11.18.65/cg/chess/' + gameid);
+                                    turnArray = jsonobj.moves;
+                                    lastTurn = jsonobj.lastmovenumber;
+                                    updateTime();
+                                }, 5000);
+               
                 }
                 else if (jsonobj.gameover === true && currentTurn >= lastTurn &&  animationFlag !== 1)
 				{
