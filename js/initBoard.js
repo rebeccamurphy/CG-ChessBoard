@@ -217,11 +217,10 @@ function render() {
         	if (camera.position.y ==125)
         		topview = false;
      }
-    if (secondload == false)
-   	{ 	
+
 	camera.lookAt( scene.position );
 	renderer.render( scene, camera );
-	}
+			
 	controls.update()
 
 }
