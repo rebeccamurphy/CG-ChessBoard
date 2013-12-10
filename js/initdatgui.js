@@ -14,7 +14,7 @@ var guiView = function() {
                 console.log(camera);
                 //camera.fov = 20;
                 console.log(camera.fov);
-                camera.position.y=125;
+                camera.position.y=150;
           			camera.position.z = 0;
                 camera.position.x = 0;
                 //xinc = camera.position.x /1000;
@@ -24,6 +24,7 @@ var guiView = function() {
                 //camera.position.x = -2;
                 //topview = true;
          				mousemove = false;
+
               }
                     };
             this.flipPlayer = function(){
@@ -31,20 +32,9 @@ var guiView = function() {
                     console.log(camera.position.z);
                     var temp = camera.position.y;
                     var tempZ = camera.position.z;
-                    camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 1000 );
-                    camera.position.y = temp;
-                    if (player %2 ==0)
-                            camera.position.z = -100;
-                    else
-                          camera.position.z = 100;
-                   if (tempZ ==50)
-                            {
-                                camera = new THREE.PerspectiveCamera( 20, window.innerWidth / window.innerHeight, 1, 1000 );
-                                camera.position.z =-50;
-                                camera.position.y = temp;
-                            }
-                  mousemove = false;
-                  player+=1;
+                    camera.position.z = -camera.position.z;
+                    mousemove = false;
+                    player+=1;
 
             };
           };
@@ -63,7 +53,8 @@ var guiOptions = function() {
                  lastTurn = jsonobj.lastmovenumber;
                  startGame = true;
                  buttonDisable = true;
-                 console.log(buttonDisable);
+                 document.getElementById('btime').innerHTML = "Black Time: " + jsonobj.blacktime;
+                 document.getElementById('wtime').innerHTML = "White Time: " + jsonobj.whitetime;
                }
                 else 
                   console.log('Wait for this game to be over, silly pants.');
@@ -86,6 +77,8 @@ var guiGame = new DAT.GUI();
 var themeListener = guiGame.add(Options, 'theme').options('Classic Plain', 'Classic Marble');
 themeListener.onChange(function(value)
 {
+  if (startGame == false)
+  {
   if (value == "Classic Plain")
 
     {
@@ -99,6 +92,7 @@ themeListener.onChange(function(value)
     }  
   restartGame = 1;
   count = 400;
+  }
 });
 
 var idListerner =  guiGame.add(Options, 'gameId');

@@ -23,7 +23,7 @@ function init(modelKind) {
  	camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 1000 );
     //    camera = new THREE.OrthographicCamera( window.innerWidth / - 2, window.innerWidth / 2, window.innerHeight / 2, window.innerHeight / - 2, 1, 1000  );
         camera.position.z = 50;
-        camera.position.y = 100;
+        camera.position.y = 120;
 
 	// scene
 
@@ -172,6 +172,10 @@ function animate() {
                 else if (jsonobj.gameover==true &&currentTurn>= lastTurn &&  animationFlag != 1)
                         {
                          startGame = false;
+                         if (jsonobj.winner ==1)
+                         	alert("White Won!");
+                         else
+                         	alert("Black Won!");
                			}
         }       
         
