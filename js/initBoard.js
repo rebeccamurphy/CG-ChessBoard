@@ -117,7 +117,7 @@ function animate() {
 	requestAnimationFrame( animate );
 	// TOM I COMMENTED THIS OUT MOMENTARILY. 
 	//also include something about the animation not finishing/animating.
-	if (startGame==true){
+	if (startGame==true && jsonobj!=null){
 	if(currentTurn !== lastTurn && count === 0 && animationFlag === 0) //change to || to test
 	{
 		pieceMove();
@@ -151,16 +151,20 @@ function animate() {
 	}
 
 	}
-	if (gameid != "None"&& jsonobj.gameOver==false && currentTurn>= lastTurn)
+	
+	if (gameid != "None" && startGame ==true)
 	{
+		if (jsonobj.gameOver==false && currentTurn>= lastTurn)
+		{
 		jsonobj = getGame('https://10.11.18.65/cg/chess/' + gameid);
 		turnArray = jsonobj.moves;
 		lastTurn = jsonobj.lastmovenumber;
-		if (jsonobj.gameOver==false)
-			console.log('need a flage here.') //TOM can you put a flag here 
+		}
+		if (jsonobj.gameover==true &&currentTurn>= lastTurn )
+			{ //TOM can you put a flag here  
+			 startGame = false;}
 	}
-	else
-		startGame = false;
+	
 	
 	render();
 }

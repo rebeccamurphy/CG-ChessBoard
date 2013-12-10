@@ -38,9 +38,13 @@ var guiOptions = function() {
                 this.theme = 'default';
                 this.gameId = 'None';
                 this.start = function(){
-                  if (gameid != "None")
+                if (gameid != "None")
                    jsonobj = getGame('https://10.11.18.65/cg/chess/' + gameid);
-                  startGame = true;
+                 //jsonobj = {"lastmovenumber": 17, "blacktime": 915.001665, "winner": 1, "gameover": true, "whitesturn": false, "moves": ["Pa2a4", "Pa7a6", "Pd2d4", "Pa6a5", "Qd1d2", "Pb7b6", "Qd2d3", "Pc7c6", "Qd3h7", "Pc6c5", "Qh7g8", "Pd7d6", "Qg8h8", "Pd6d5", "Qh8f8", "Pd5d4", "Qf8e8"], "whitetime": 909.452745}
+                 console.log(jsonobj);
+                 turnArray = jsonobj.moves;
+                 lastTurn = jsonobj.lastmovenumber;
+                 startGame = true;
                 }
 }
 var view = new guiView();
@@ -52,14 +56,6 @@ var guiCamera = new DAT.GUI({ autoPlace: false });
 var Options = new guiOptions();
 
 
-var FizzyText = function() {
-  this.message = 'dat.gui';
-  this.speed = 0.8;
-  this.displayOutline = false;
-
-};
-
-var text = new FizzyText();
 //var guiGame = new DAT.GUI({ autoPlace: false });
 var guiGame = new DAT.GUI();
 var themeListener = guiGame.add(Options, 'theme').options('Classic Plain', 'Classic Marble');
