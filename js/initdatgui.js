@@ -42,6 +42,9 @@ var guiOptions = function() {
                   console.log(gameid);
                   startGame = true;
                 }
+				this.restart = function(){
+                  restartGame = 1;
+                }
 }
 var view = new guiView();
 var guiCamera = new DAT.GUI({ autoPlace: false });
@@ -75,3 +78,4 @@ var idListerner =  guiGame.add(Options, 'gameId');
 idListerner.onFinishChange(function(value){gameid = value;});
 
 guiGame.add(Options, 'start');
+guiGame.add(Options, 'restart');

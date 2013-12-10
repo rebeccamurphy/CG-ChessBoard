@@ -165,6 +165,14 @@ function animate() {
 		lastTurn = jsonobj.lastmovenumber;
 	}
 	
+	if(restartGame === 1  && animationFlag === 0){
+		count = 500;
+		currentTurn = 0;
+		restartGame = 0;
+		init(modelKind);
+		animate();
+	}
+	
 	render();
 }
 
