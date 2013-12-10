@@ -4,13 +4,27 @@ var player =0;
 var guiView = function() {
             this.mouseControl = function(){
                     mousemove = !mousemove;
+                    console.log('Mouse Loc x: ' + camera.position.x + 'y: '+  camera.position.y + 'z: ' +camera.position.z);
                     };
             this.topView = function() {
-            		camera = new THREE.PerspectiveCamera( 20, window.innerWidth / window.innerHeight, 1, 1000 );
-          			camera.position.z = 50;
-                camera.position.y = 300;
+            		//camera = new THREE.PerspectiveCamera( 20, window.innerWidth / window.innerHeight, 1, 1000 );
+               console.log(top);
+               if (topview==false)
+               {
+                console.log(camera);
+                //camera.fov = 20;
+                console.log(camera.fov);
+                camera.position.y=125;
+          			camera.position.z = 0;
                 camera.position.x = 0;
+                //xinc = camera.position.x /1000;
+                //zinc = camera.position.x / 1000;
+                //yinc = (camera.position.z -125)/1000;
+                console.log('x: ' + camera.position.x + ' y: '+  camera.position.y + ' z: ' +camera.position.z);
+                //camera.position.x = -2;
+                //topview = true;
          				mousemove = false;
+              }
                     };
             this.flipPlayer = function(){
                     //sometimes this zooms out a lot and idk why. FIXLATERS

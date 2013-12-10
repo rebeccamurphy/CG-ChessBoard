@@ -11,7 +11,7 @@ function init(modelKind) {
 		window.addEventListener( 'resize', onWindowResize, false );
 		window.addEventListener('keypress', function (e) {
                     if (e.keyCode==13) {
-                    	console.log(e.keyCode);
+                    	console.log('x: ' + camera.position.x + 'y: '+  camera.position.y + 'z: ' +camera.position.x);
                         mousemove = !mousemove;
                     				}
 
@@ -21,8 +21,8 @@ function init(modelKind) {
 	container.setAttribute("id", "boardcontainer");
 	document.body.appendChild( container );
  	camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 1000 );
-        //camera = new THREE.OrthographicCamera( window.innerWidth / - 2, window.innerWidth / 2, window.innerHeight / 2, window.innerHeight / - 2, 1, 1000  );
-        camera.position.z = 100;
+    //    camera = new THREE.OrthographicCamera( window.innerWidth / - 2, window.innerWidth / 2, window.innerHeight / 2, window.innerHeight / - 2, 1, 1000  );
+        camera.position.z = 50;
         camera.position.y = 100;
 
 	// scene
@@ -157,7 +157,8 @@ function animate() {
 	{
 		if (jsonobj.gameOver==false && currentTurn>= lastTurn &&animationFlag != 1)
 		{
-		jsonobj = getGame('https://10.11.18.65/cg/chess/' + gameid);
+			while( jsonobj.lastmovenumber == lastTurn && jsonobj.gameover == false)
+				jsonobj = getGame('https://10.11.18.65/cg/chess/' + gameid);
 		turnArray = jsonobj.moves;
 		lastTurn = jsonobj.lastmovenumber;
 		}
@@ -178,7 +179,18 @@ function render() {
         { camera.position.x += ( mouseX - camera.position.x ) * .05;
           camera.position.y += ( - mouseY - camera.position.y ) * .05;
         }
+     if (topview == true)
+     { console.log(top);
+     		camera.position.z+= (zinc *-1);
+     		
+     		camera.position.x+= (xinc*-1);
+        	camera.position.y = (yinc*-1);
+
+        	if (camera.position.y ==125)
+        		topview = false;
+     }
 	camera.lookAt( scene.position );
 	renderer.render( scene, camera );
+	controls.update()
 
 }

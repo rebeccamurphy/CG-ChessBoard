@@ -28,6 +28,7 @@
 	<body>
 
 		<script src="js/Three.js"></script>
+		<script src="js/OrbitControls.js"></script>
 
 		<script src="js/loaders/MTLLoader.js"></script>
 		<script src="js/loaders/OBJLoader.js"></script>
@@ -95,16 +96,20 @@
 			var mousemove = false;
 			var windowHalfX = window.innerWidth / 2;
 			var windowHalfY = window.innerHeight / 2;
-		
+			
+			var topview = false; 
+			var xinc =0, yinc =0, zinc =0;
 
-
+			var controls = null;
 
 
 			window.onload =function(){
 			init(modelKind); 
 			//document.getElementById('GameOptions').appendChild(guiGame.domElement);
 			//document.getElementById('Camera').appendChild(guiCamera.domElement);
+			controls = new THREE.OrbitControls(camera, renderer.domElement);controls = new THREE.OrbitControls(camera, renderer.domElement);
 			animate();
+
 
 			};
            	
