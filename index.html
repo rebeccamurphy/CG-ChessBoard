@@ -70,19 +70,28 @@
 			var startGame = false; 
 			//promotion test json
 			//jsonobj = {"lastmovenumber": 12, "blacktime": 1108.887688, "gameover": false, "whitesturn": false, "moves": ["Pe2e4", "Pd7d6", "Pe4e5", "Pd6d5", "Pe5e6", "Pd5d4", "Pe6e7", "Pd4d3", "Pe7e8Q", "Pd3d2", "Qe8g8", "Pd2d1N", "Qg8c1", "Nd1d1"], "whitetime": 920.588292};
-			//en passant test
 			
+			jsonobj = {"lastmovenumber": 109, "blacktime": 829.423713, "winner": 1, "gameover": true, "whitesturn": false, "moves": ["Pb2b3", "Pb7b6", "Pa2a3", "Pa7a6", "Pa3a4", "Pe7e6", "Bc1b2", "Pa6a5", "Pc2c4", "Qd8h4", "Pe2e3", "Pf7f5", "Bb2c3", "Pc7c6", "Qd1f3", "Pd7d6", "Pd2d3", "Ph7h6", "Pe3e4", "Ph6h5", "Pe4e5", "Pd6e5", "Bc3e5", "Nb8d7", "Qf3c6", "Bf8b4", "Ke1e2", "Qh4g4", "Pf2f3", "Qg4h4", "Pg2g3", "Qh4e7", "Qc6a8", "Ke8d8", "Pd3d4", "Nd7e5", "Pc4c5", "Qe7c7", "Pc5b6", "Qc7c2", "Ke2e3", "Qc2c1", "Ke3f2", "Qc1b2", "Kf2e3", "Qb2a1", "Pb6b7", "Pf5f4", "Pg3f4", "Bb4d2", "Ke3e2", "Ng8e7", "Pf4e5", "Kd8d7", "Nb1d2", "Ne7c6", "Pb7c8Q", "Rh8c8", "Qa8b7", "Rc8c7", "Qb7b6", "Nc6d4", "Ke2e3", "Qa1c3", "Bf1d3", "Nd4f5", "Ke3e2", "Rc7c6", "Qb6a7", "Rc6c7", "Qa7b8", "Qc3e5", "Bd3e4", "Kd7e7", "Nd2c4", "Qe5c5", "Ke2e1", "Nf5d4", "Ng1e2", "Rc7c8", "Qb8b7", "Rc8c7", "Qb7b8", "Rc7c8", "Qb8b7", "Rc8c7", "Qb7b8", "Rc7c8", "Qb8b7", "Rc8c7", "Qb7b8", "Nd4e2", "Ke1e2", "Rc7d7", "Nc4e5", "Rd7c7", "Ne5g6", "Ke7f7", "Rh1c1", "Qc5d6", "Rc1c7", "Kf7f6", "Rc7f7", "Kf6f7", "Qb8d6", "Kf7g8", "Qd6f8", "Kg8f8", "Ng6f8"], "whitetime": 779.20756};
 			
 			//var gameid = window.prompt("GameId", "None");
-        
 
-			var turnArray;
-			
+			var turnArray = [];
+
+            //if (gameid != "None")
+			//	jsonobj = getGame('https://10.11.18.65/cg/chess/' + gameid);
+
 			var modelKind = 'Plain';
 
 			var count = 400;
 			var animationFlag = 0;
 			var animateCount = 0;
+			
+			//change this to change speed
+			var animationFrames = 50; //should be 50 as default, for testing set to 10
+			var deltaAnimation = animationFrames; // the change to be adjusted by the slider
+			var animationFramesChange = 0;
+			
+			var restartGame = 0;
 			
 			var moveXtransition = 0;
 			var moveZtransition = 0;

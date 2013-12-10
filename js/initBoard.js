@@ -115,61 +115,82 @@ function onDocumentMouseMove( event ) {
 }
 
 function animate() {
-	requestAnimationFrame( animate );
-	// TOM I COMMENTED THIS OUT MOMENTARILY. 
-	//also include something about the animation not finishing/animating.
-	if (startGame==true && jsonobj!=null){
-	if(currentTurn !== lastTurn && count === 0 && animationFlag === 0) //change to || to test
-	{
-		pieceMove();
-		//count = 200;
-	}
-	count -= 10;
-	//update the json pulled from the server here, and the array, and the last turn number.
-	
-	if(animationFlag === 1)
-	{
-		if(animateCount < 5) //rise
-		{
-			currentPieceExternal.translateX(moveXtransition / 10);
-			currentPieceExternal.translateZ(moveZtransition / 10);
-			currentPieceExternal.translateY(3);
-			animateCount++;
-		}
-		else if(animateCount < 10) //fall
-		{
-			currentPieceExternal.translateX(moveXtransition / 10);
-			currentPieceExternal.translateZ(moveZtransition / 10);
-			currentPieceExternal.translateY(-3);
-			animateCount++;
-		}
-		else //wrap up
-		{
-			animationFlag = 0;
-			animateCount = 0;
-			count = 0;
-		}
-	}
+        requestAnimationFrame( animate );
+        // TOM I COMMENTED THIS OUT MOMENTARILY. 
+        //also include something about the animation not finishing/animating.
+        if (startGame==true && jsonobj!=null){
+                if(currentTurn !== lastTurn && count === 0 && animationFlag === 0) //change to || to test
+                {
+                        pieceMove();
+                        //count = 200;
+                }
+                count -= 10;
+                //update the json pulled from the server here, and the array, and the last turn number.
+                
+                if(animationFlag === 1 && animationFramesChange === 0)
+                {
+                        if(animateCount < animationFrames / 2) //rise
+                        {
+                                currentPieceExternal.translateX(moveXtransition / animationFrames);
+                                currentPieceExternal.translateZ(moveZtransition / animationFrames);
+                                currentPieceExternal.translateY(1);
+                                animateCount++;
+                        }
+                        else if(animateCount < animationFrames) //fall
+                        {
+                                currentPieceExternal.translateX(moveXtransition / animationFrames);
+                                currentPieceExternal.translateZ(moveZtransition / animationFrames);
+                                currentPieceExternal.translateY(-1);
+                                animateCount++;
+                        }
+                        else //wrap up
+                        {
+                                animationFlag = 0;
+                                animateCount = 0;
+                                count = 0;
+                        }
+                }
+                
+                //change the speed after the current animation has finished... not sure how though, as datGUI
+                if(animationFramesChange === 1 && animationFlag === 0)
+                {
+                        animationFrames = deltaAnimation; //deltaAnimation
+                        animationFramesChange = 0;
+                }
 
-	}
-	
-	if (gameid != "None" && startGame ==true)
-	{
-		if (jsonobj.gameOver==false && currentTurn>= lastTurn &&animationFlag != 1)
-		{
-			while( jsonobj.lastmovenumber == lastTurn && jsonobj.gameover == false)
-				jsonobj = getGame('https://10.11.18.65/cg/chess/' + gameid);
-		turnArray = jsonobj.moves;
-		lastTurn = jsonobj.lastmovenumber;
-		}
-		else if (jsonobj.gameover==true &&currentTurn>= lastTurn &&  animationFlag != 1)
-			{
-			 startGame = false;
-			}
-	}
-	
-	
-	render();
+        }
+
+        if (gameid != "None" && startGame ==true)
+        {
+                if (jsonobj.gameOver==false && currentTurn>= lastTurn &&animationFlag != 1)
+                {
+                        while( jsonobj.lastmovenumber == lastTurn && jsonobj.gameover == false)
+                                jsonobj = getGame('https://10.11.18.65/cg/chess/' + gameid);
+                turnArray = jsonobj.moves;
+                lastTurn = jsonobj.lastmovenumber;
+                }
+                else if (jsonobj.gameover==true &&currentTurn>= lastTurn &&  animationFlag != 1)
+                        {
+                         startGame = false;
+               			}
+        }       
+        
+        if(restartGame === 1  && animationFlag === 0){
+                
+                if (gameid != "None")
+                {
+                        jsonobj = getGame('https://10.11.18.65/cg/chess/' + gameid);
+                        turnArray = jsonobj.moves;
+                        lastTurn = jsonobj.lastmovenumber;
+                }
+                count = 500;
+                currentTurn = 0;
+                restartGame = 0;
+                init(modelKind);
+                animate();
+        }
+        
+        render();
 }
 
 function render() {
