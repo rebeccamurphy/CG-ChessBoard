@@ -61,6 +61,7 @@ var guiOptions = function() {
 					{ 
 						startGame = true;
 					}
+					startException = 1;
 					buttonDisable = true;
 					updateMoveHTML();
 					updateTime();

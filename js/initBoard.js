@@ -122,7 +122,7 @@ function animate() {
         requestAnimationFrame( animate );
         // TOM I COMMENTED THIS OUT MOMENTARILY. 
         //also include something about the animation not finishing/animating.
-        if (startGame == true && jsonobj !== null){
+        if (startGame == true && jsonobj !== null && restartGame === 0){
                 if(currentTurn < lastTurn && count <= 0 && animationFlag === 0) //change to || to test
                 {
                         pieceMove();
@@ -164,53 +164,9 @@ function animate() {
 				updateTime();
 				//updateMoveHTML();
 
-        }
-
-        if (gameid !== "None" && startGame === true)
-        {
-			//alert("this should not been seen");
-                // if (jsonobj.gameover === false && currentTurn <= lastTurn && animationFlag !== 1)
-                // {//so this should check if there are any new moves from the server, though is is
-                    // //looping 30 times a second, the delay only works to offset each call to the server by 5 seconds
-                    // //we could put a count inthat would make it only execute every 90 frames or so, which would be every 3 seconds i think?
-                    // //the current game on the server is 720 at 2pm
-                        
-                                // console.log('is getting to this if');
-                                // setTimeout(function (){
-                                    // jsonobj = getGame('https://10.11.18.65/cg/chess/' + gameid);
-                                    // console.log('trying to get new moves from server.');
-									// var arrayToCheck = jsonobj.moves;
-								// // if(typeof jsonobj.moves !== "undefined")
-								// // {
-                                    // if (arrayToCheck.length > turnArray.length)
-                                        // { // is jsonobj is different do this stuff. 
-                                            // console.log('success!');
-											// turnArray = jsonobj.moves;
-                                            // lastTurn = jsonobj.lastmovenumber;
-											// updateMoveHTML();
-                                            // updateTime(); }
-                                    // else 
-                                        // console.log('hafta try again');
-								// // }
-                                  
-
-                                // }, 5000);
-                          
-               
-                // }
-                // if (jsonobj.gameover === true && currentTurn === lastTurn &&  animationFlag !== 1)
-				// {
-					// startGame = false;
-					// buttonDisable = false;
-					// startException = 1;
-					// // if (jsonobj.winner === 1)
-						// // alert("White Won!");
-					// // else
-						// // alert("Black Won!");
-				// }
-        }  
+        } 
 		
-		if(gameid !== "None" && startGame === true && animationFlag === 0)
+		if(gameid !== "None" && startGame === true && animationFlag === 0 && restartGame === 0)
 		{
 			if(serverPull === 0)
 			{
@@ -224,6 +180,12 @@ function animate() {
 			serverPull -= 10;
 		}
         
+		if(gameid !== "None" && startGame === true && jsonobj.gameover === true && currentTurn === lastTurn && animationFlag === 0)
+		{
+			startGame = false;
+			buttonDisable = false;
+		}
+		
         if(restartGame === 1  && animationFlag === 0){
                 
                 if (gameid !== "None")
@@ -234,10 +196,10 @@ function animate() {
                 }
                 count = 500;
 				serverPull = 200;
-				if(currentTurn > 0 || startException === 1)
+				if(startException === 1)
 				{
 					startGame = true;
-					startException = 0;
+					startException = 1;
 				}
                 currentTurn = 0;
                 restartGame = 0;
