@@ -110,7 +110,7 @@ themeListener.onChange(function(value)
   {
     modelKind = 'Faculty';
   }  
-  else if (value  == 'WarGames')
+  else if (value  == 'War Games')
     modelKind = 'gameover';
   restartGame = 1;
   //count = 500;
