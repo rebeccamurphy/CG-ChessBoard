@@ -142,7 +142,7 @@ function animate() {
         requestAnimationFrame( animate );
         // TOM I COMMENTED THIS OUT MOMENTARILY. 
         //also include something about the animation not finishing/animating.
-        if (startGame == true && jsonobj !== null && restartGame === 0){
+        if (startGame == true && jsonobj !== null){
                 if(currentTurn < lastTurn && count <= 0 && animationFlag === 0) //change to || to test
                 {
                         pieceMove();
@@ -219,7 +219,7 @@ function animate() {
                     turnArray = jsonobj.moves;
                     lastTurn = jsonobj.lastmovenumber;
                 }
-                count = 500;
+                count = computerSpeed;
 				serverPull = 200;
 				if(startException === 1)
 				{
