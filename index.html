@@ -28,27 +28,26 @@
 	</head>
 
 	<body>
-
-		<script src="js/Three.js"></script>
-		<script src="js/OrbitControls.js"></script>
-
+	<!--JS Libraries/Loaders Used-->
+		<script src="js/Libraries/Three.js"></script>
+		<script src="js/Libraries/OrbitControls.js"></script>
 		<script src="js/loaders/MTLLoader.js"></script>
 		<script src="js/loaders/OBJLoader.js"></script>
 		<script src="js/loaders/OBJMTLLoader.js"></script>
-		 <script src="js/dat.gui.min.js"></script>
-		 <script src="js/initdatgui.js"></script>
-		 <script src="js/jsonparse.js"></script>
+		<script src="js/Libraries/Detector.js"></script>
+		<script src="js/Libraries/stats.min.js"></script>
+		<script src="js/Libraries/dat.gui.min.js"></script>
+		<script src="js/Libraries/SubdivisionModifier.js"></script>
 
-		<script src="js/Detector.js"></script>
-		<script src="js/stats.min.js"></script>
-		<script src="js/SubdivisionModifier.js"></script>
+	<!--Our JS Files.  -->
+		<script src="js/initdatgui.js"></script>
+		<script src="js/jsonparse.js"></script>
 		<script src="js/initBoard.js"></script>
 		<script src="js/pieces.js"></script>
 		<script src="js/whitePieces.js"></script>
 		<script src="js/blackPieces.js"></script>
 		<script src="js/movement.js"></script>
 		<script src="js/jsonparse.js"></script>
-		<!--<div id= "GameOptions" style="float: left;" ></div>-->
 		
 		<script>
 			var container, stats;
@@ -73,9 +72,7 @@
 
 			var turnArray = [];
 
-            //if (gameid != "None")
-			//	jsonobj = getGame('https://10.11.18.65/cg/chess/' + gameid);
-
+            
 			var modelKind = 'Plain';
 			
 			var currentBG = 'plain1';
