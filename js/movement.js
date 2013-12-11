@@ -282,7 +282,7 @@ function pieceMove()
 }
 
 function updateTime(){
-	if (jsonobj != null && jsonobj.hasOwnProperty(whitename) && jsonobj.hasOwnProperty(blackname))
+	if (jsonobj != null && jsonobj.hasOwnProperty('whitename') && jsonobj.hasOwnProperty('blackname'))
 	{
 	var timeId = "";
 	timeId = "<b>" +jsonobj.whitename + ": " + jsonobj.whitetime +"</b> &nbsp&nbsp <b style =  \"color:#000000\">" + jsonobj.blackname+ ": " +jsonobj.blacktime + "</b>";

@@ -42,7 +42,13 @@ function init(modelKind) {
 	var directionalLight = new THREE.DirectionalLight( 0xffeedd );
 	directionalLight.position.set( 0.5, 2, 1 ).normalize();
 	scene.add( directionalLight );
-	var spotLight = new THREE.SpotLight( 0xffffff );
+    
+    var pointLight2 = new THREE.PointLight( 0xffeedd );
+    pointLight2.position.set( -100, 250, -25 ).normalize();
+    scene.add( pointLight2 );
+    
+	
+    var spotLight = new THREE.SpotLight( 0xffffff );
         spotLight.position.set( 100, 1000, 100 );
 
         spotLight.castShadow = true;
