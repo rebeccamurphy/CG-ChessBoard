@@ -1,4 +1,3 @@
-var player =0;
 
 //camera controls.                        
 var guiView = function() {
@@ -8,13 +7,9 @@ var guiView = function() {
  
                     };
             this.topView = function() {
-                //camera = new THREE.PerspectiveCamera( 20, window.innerWidth / window.innerHeight, 1, 1000 );
-               console.log(top);
-              // if (topview==false)
+                
                {
-                console.log(camera);
-              
-                console.log(camera.fov);
+                // jumps the camera to top view and turns off mousemove 
                 camera.position.y=150;
                 camera.position.z = 0;
                 camera.position.x = 0;
@@ -24,22 +19,22 @@ var guiView = function() {
               }
                     };
             this.flipPlayer = function(){
-                    //sometimes this zooms out a lot and idk why. FIXLATERS
-                    console.log(camera.position.z);
+                    // flips the player side your looking, turns off mouse move.
                     var temp = camera.position.y;
                     var tempZ = camera.position.z;
                     camera.position.z = -camera.position.z;
                     mousemove = false;
-                    player+=1;
+                   
 
             };
           };
+// controls game options
 var guiOptions = function() {
                 this.theme = 'default';
                 this.backGround = 'default';
                 this.gameId = 'None';
                 this.start = function(){
-
+                  //diables start if game is playing. 
                 if (buttonDisable === false)
                 { 
                   initOptions.close();

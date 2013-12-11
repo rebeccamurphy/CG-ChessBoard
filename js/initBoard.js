@@ -1,22 +1,25 @@
+/*
+* @author Tom & Rebecca
+* This file is used to create the board with lights, controls, etc.
+*/
 
 function init(modelKind) {
-	//these if-else are for reloading the board with a different texture. 
+	
 	if (document.getElementById('boardcontainer') !=null)
-	{
+	{	//if the current container for the chessboard is not empty, this removes the container from the html, so a board with a different modelKind can be loaded.
   		var olddiv = document.getElementById('boardcontainer');
   		olddiv.parentNode.removeChild(olddiv);
-  		
-         openAllControls();
+  		//this opens all the gui controls
+  		openAllControls(); 
 	}
 	else
-	{
+	{	//first time the document is loaded, adds all control listerners as well as camera
 		document.addEventListener( 'mousemove', onDocumentMouseMove, false );
 		window.addEventListener( 'resize', onWindowResize, false );
 		window.addEventListener('keypress', function (e) {
            console.log(e.keyCode);
                     if (e.keyCode==122) {
-                        //pressing the z button turns on camera controls.
-                    	
+                        //pressing the z button turns on camera follow mouse controls.
                         mousemove = !mousemove;
                         
                     				}
@@ -27,33 +30,28 @@ function init(modelKind) {
         camera.position.y = 120;
 
 	}
+	//creates the div tag for the board
     container = document.createElement( 'div' );
     container.setAttribute("id", "boardcontainer");
     document.body.appendChild( container );
+    
     if (modelKind != 'gameover')
     {
+    	//if the theme is not war games, it loads the board with all the lights normally.
 	// scene
 
 	scene = new THREE.Scene();
 
 	var ambient = new THREE.AmbientLight( 0x101010 );
-	scene.add( ambient );
+		scene.add( ambient );
 
 	var directionalLight = new THREE.DirectionalLight( 0xffeedd );
-	directionalLight.position.set( 0.5, 2, 1 ).normalize();
-	scene.add( directionalLight );
+		directionalLight.position.set( 0.5, 2, 1 ).normalize();
+		scene.add( directionalLight );
     
     var pointLight2 = new THREE.PointLight( 0xffeedd );
-    pointLight2.position.set( -100, 250, -25 ).normalize();
-    scene.add( pointLight2 );
-    
-    if (modelKind == 'Faculty')
-    {
-    
-    var directionalLight2 = new THREE.DirectionalLight( 0xffffff, 0.25 );
-    directionalLight2.position.set( 0, 0, 50 );
-    scene.add( directionalLight2 );
-	}
+	    pointLight2.position.set( -100, 250, -25 ).normalize();
+	    scene.add( pointLight2 );
 
     var spotLight = new THREE.SpotLight( 0xffffff );
         spotLight.position.set( 100, 1000, 100 );
@@ -68,8 +66,17 @@ function init(modelKind) {
         spotLight.shadowCameraFov = 30;
 
         scene.add( spotLight );
+   
+    if (modelKind == 'Faculty')
+    {
+    //adds an extra light for a certain theme.
+    var directionalLight2 = new THREE.DirectionalLight( 0xffffff, 0.25 );
+	    directionalLight2.position.set( 0, 0, 50 );
+	    scene.add( directionalLight2 );
+	}
 
-	// 
+ 
+	// Loads the chessboard that corresponds with the current theme/modelKind
 
 	chessBoard = new THREE.Object3D(); //group node
 
@@ -79,54 +86,38 @@ function init(modelKind) {
 		board = object;
 		chessBoard.add( board );
 	} );
+	// keeps the same background when a new theme is loaded
 	changeBG(currentBG);
+	//initiates the chessboard and adds it to the scene
 	initWhite(modelKind);
 	initBlack(modelKind);
 	initBoardArray();
-	
 	scene.add( chessBoard );
 
 	
 	
     }
 
-    else
+    else //loads the War Games Screen 
     {   
         container.style.background="#0000A0";
         container.innerHTML = "<b style=text-align:center;font-size:40px;font-family:CENTURY GOTHIC> <br> <br> GREETINGS PROFESSOR <br> <br> A STRANGE GAME. <br> <br> THE ONLY WINNING MOVE IS NOT TO PLAY.</b>";
     }
-    if (firstLoad ==true)
+    if (firstLoad ==true) //Only loads the instructions on the first load
     {
     container.innerHTML = instructions;
     firstLoad = false;
     }
+    //creates renderer and appends it to container
     renderer = new THREE.WebGLRenderer();
     renderer.setSize( window.innerWidth, window.innerHeight );
     container.appendChild( renderer.domElement );
+    //ands click, drag and zoom camera controls. 
     controls = new THREE.OrbitControls(camera, renderer.domElement);
 }
 
-function cloneObj ( obj ) {
-	var i, cpy = new THREE.Object3D();
-	for (var i in obj.children) {
-		cpy.add(
-			new THREE.Mesh(obj.children[i].geometry)
-		);
-	}
-	return cpy;
-}
 
-function cloneObjMtl ( objmtl ) {
-	var i, cpy = new THREE.Object3D();
-	for (var i in objmtl.children) {
-		cpy.add(
-			new THREE.Mesh(objmtl.children[i].geometry,
-			objmtl.children[i].material)
-		);
-	}
-	return cpy;
-}
-
+//resizes board based on window size
 function onWindowResize() {
 
 	windowHalfX = window.innerWidth / 2;
@@ -138,22 +129,21 @@ function onWindowResize() {
 	renderer.setSize( window.innerWidth, window.innerHeight );
 
 }
-
+// tracks mouse movement for camera controls.
 function onDocumentMouseMove( event ) {
 
 	mouseX = ( event.clientX - windowHalfX ) / 2;
 	mouseY = ( event.clientY - windowHalfY ) / 2;
 }
 
+//animation function
 function animate() {
         requestAnimationFrame( animate );
-        // TOM I COMMENTED THIS OUT MOMENTARILY. 
-        //also include something about the animation not finishing/animating.
         if (startGame == true && jsonobj !== null){
                 if(currentTurn < lastTurn && count <= 0 && animationFlag === 0) //change to || to test
                 {
                         pieceMove();
-                        //count = 200;
+                        
                 }
                 count -= 10;
                 //update the json pulled from the server here, and the array, and the last turn number.
@@ -182,14 +172,14 @@ function animate() {
                         }
                 }
                 
-                //change the speed after the current animation has finished... not sure how though, as datGUI
+                //change the speed after the current animation has finished
                 if(animationFramesChange === 1 && animationFlag === 0)
                 {
                         animationFrames = deltaAnimation; //deltaAnimation
                         animationFramesChange = 0;
                 }
 				updateTime();
-				//updateMoveHTML();
+				
 
         } 
 		
@@ -232,7 +222,7 @@ function animate() {
 				{
 					alert("White Team wins!");
 				}
-			}
+		}
 			startGame = false;
 			buttonDisable = false;
             updateMoveHTML();
@@ -241,7 +231,7 @@ function animate() {
 		
 		//restart
         if(restartGame === 1  && (animationFlag === 0 || animationFlag === 2)){
-                
+                /*
                 if (gameid !== "None")
                 {
                     jsonobj = getGame('https://10.11.18.65/cg/chess/' + gameid);
@@ -250,6 +240,7 @@ function animate() {
 					updateMoveHTML();
 					updateTime();
                 }
+                */
                 count = computerSpeed;
 				serverPull = 200;
 				if(startException === 1)
@@ -289,10 +280,10 @@ function animate() {
 		
         render();
 }
-
+// render function
 function render() {
 
-	
+	// if mousemove is true, the camera will follow the mouse
 	 if (mousemove ==true)
         { camera.position.x += ( mouseX - camera.position.x ) * .05;
           camera.position.y += ( - mouseY - camera.position.y ) * .05;
@@ -301,6 +292,7 @@ function render() {
 	camera.lookAt( scene.position );
 	renderer.render( scene, camera );
 
+	//updates the click, drag, and zoom camera controls
 	controls.update()
 
 }

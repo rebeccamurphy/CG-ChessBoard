@@ -1,3 +1,8 @@
+/*
+* @author Tom & Rebecca
+* This file is used to add the white chess pieces to the scene, based on the selected kind of model, referenced in the theme in the datgui interface.
+*/
+
 function initWhite(modelKind)
 {
 	whiteQueen = new THREE.Object3D();
