@@ -47,24 +47,24 @@ var guiOptions = function() {
                   cameraGUI.open();
                   removeInstructions();
                   if (gameid !== "None")
-				          {
-					         jsonobj = getGame('https://10.11.18.65/cg/chess/' + gameid);
+                  {
+                   jsonobj = getGame('https://10.11.18.65/cg/chess/' + gameid);
                
-					turnArray = jsonobj.moves;
-					lastTurn = jsonobj.lastmovenumber;
-					if(startException === 1)
-					{
-						restartGame = 1;
-					}
-					else
-					{ 
-						startGame = true;
-					}
-					startException = 1;
-					buttonDisable = true;
-					updateMoveHTML();
-					updateTime();
-				  }
+          turnArray = jsonobj.moves;
+          lastTurn = jsonobj.lastmovenumber;
+          if(startException === 1)
+          {
+            restartGame = 1;
+          }
+          else
+          { 
+            startGame = true;
+          }
+          startException = 1;
+          buttonDisable = true;
+          updateMoveHTML();
+          updateTime();
+          }
            else 
               console.log('Enter a Game ID');
                }
@@ -73,12 +73,12 @@ var guiOptions = function() {
                }
          this.restart = function(){
                  restartGame = 1;
-				 count = computerSpeed;
+         count = computerSpeed;
          initOptions.close();
-				 //currentTurn = 0;
+         //currentTurn = 0;
                }
          this.animationSpeed = 26;
-		 this.computerSpeed = 'default';
+     this.computerSpeed = 'default';
 }
 var Options = new guiOptions();
 var view = new guiView();
@@ -116,9 +116,9 @@ themeListener.onChange(function(value)
   else if (value  == 'War Games')
   {
     modelKind = 'gameover';
-	animationFlag = 2;
+  animationFlag = 2;
   gui = null;
-	//note: this does break the game. Originally not intentional, though improved to be.
+  //note: this does break the game. Originally not intentional, though improved to be.
   }
   restartGame = 1;
   count = computerSpeed;
@@ -150,15 +150,15 @@ compControl.onChange(function(value)
 {
   if (value == 'Slow')
     {
-		computerSpeed = 600;
+    computerSpeed = 600;
     }
   else if (value == 'Slower')
     {
-		computerSpeed = 900;
+    computerSpeed = 900;
     }
   else if (value == 'Basically a Rock')
   {
-		computerSpeed = 1200;
+    computerSpeed = 1200;
   }  
 });
 
