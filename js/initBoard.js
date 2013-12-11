@@ -233,13 +233,15 @@ function animate() {
 		}
 		
 		//restart
-        if(restartGame === 1  && animationFlag === 0){
+        if(restartGame === 1  && (animationFlag === 0 || animationFlag === 2)){
                 
                 if (gameid !== "None")
                 {
                     jsonobj = getGame('https://10.11.18.65/cg/chess/' + gameid);
                     turnArray = jsonobj.moves;
                     lastTurn = jsonobj.lastmovenumber;
+					updateMoveHTML();
+					updateTime();
                 }
                 count = computerSpeed;
 				serverPull = 200;
@@ -253,9 +255,16 @@ function animate() {
 				
                 init(modelKind);
                 animate();
-                updateMoveHTML();
-                updateTime();
         }
+		
+		if(animationFlag === 2)
+		{
+			gui.close();
+			//locks the user out, "permanently" when they choose 'War Games'
+			//refresh necessary, as otherwise, game will not go well because of models.
+			//So, it was either lock the user out and force a refresh, or let everything
+			//explode if the use changes models after first run.
+		}
 		
         render();
 }

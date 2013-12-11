@@ -113,7 +113,11 @@ themeListener.onChange(function(value)
     modelKind = 'Faculty';
   }  
   else if (value  == 'War Games')
+  {
     modelKind = 'gameover';
+	animationFlag = 2;
+	//note: this does break the game. Originally not intentional, though improved to be.
+  }
   restartGame = 1;
   //count = 500;
 });
