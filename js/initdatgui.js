@@ -117,7 +117,8 @@ themeListener.onChange(function(value)
   {
     modelKind = 'gameover';
   animationFlag = 2;
-  gui = null;
+  dat.GUI.toggleHide();
+
   //note: this does break the game. Originally not intentional, though improved to be.
   }
   restartGame = 1;

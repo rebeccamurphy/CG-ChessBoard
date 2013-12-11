@@ -275,7 +275,7 @@ function animate() {
 			  oldText.parentNode.removeChild(oldText);
 			}
 			//dat.GUI.dom.removeChild(gui.domElement);
-			dat.GUI.toggleHide();
+			//dat.GUI.toggleHide();
 
 		}
 		
