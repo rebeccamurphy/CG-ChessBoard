@@ -74,6 +74,7 @@ var guiOptions = function() {
          this.restart = function(){
                  restartGame = 1;
 				 count = computerSpeed;
+         initOptions.close();
 				 //currentTurn = 0;
                }
          this.animationSpeed = 26;
@@ -116,6 +117,7 @@ themeListener.onChange(function(value)
   {
     modelKind = 'gameover';
 	animationFlag = 2;
+  gui = null;
 	//note: this does break the game. Originally not intentional, though improved to be.
   }
   restartGame = 1;
