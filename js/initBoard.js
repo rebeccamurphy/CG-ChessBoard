@@ -264,6 +264,7 @@ function animate() {
 			//refresh necessary, as otherwise, game will not go well because of models.
 			//So, it was either lock the user out and force a refresh, or let everything
 			//explode if the use changes models after first run.
+            //this doesn't work if you restart the game, gui is still shown.
 			if (document.getElementById('MOVE') != null) 
 			{
 			  var oldText = document.getElementById('MOVE');
@@ -275,7 +276,7 @@ function animate() {
 			  oldText.parentNode.removeChild(oldText);
 			}
 			//dat.GUI.dom.removeChild(gui.domElement);
-			//dat.GUI.toggleHide();
+			dat.GUI.toggleHide();
 
 		}
 		

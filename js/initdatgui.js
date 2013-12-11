@@ -73,7 +73,7 @@ var guiOptions = function() {
                }
          this.restart = function(){
                  restartGame = 1;
-         count = computerSpeed;
+        count = computerSpeed;
          initOptions.close();
          //currentTurn = 0;
                }
@@ -115,9 +115,8 @@ themeListener.onChange(function(value)
   }  
   else if (value  == 'War Games')
   {
-    modelKind = 'gameover';
+  modelKind = 'gameover';
   animationFlag = 2;
-  dat.GUI.toggleHide();
 
   //note: this does break the game. Originally not intentional, though improved to be.
   }
