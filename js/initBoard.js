@@ -264,6 +264,19 @@ function animate() {
 			//refresh necessary, as otherwise, game will not go well because of models.
 			//So, it was either lock the user out and force a refresh, or let everything
 			//explode if the use changes models after first run.
+			if (document.getElementById('MOVE') != null) 
+			{
+			  var oldText = document.getElementById('MOVE');
+			  oldText.parentNode.removeChild(oldText);
+			}
+			if (document.getElementById('TIME') != null) 
+			{
+			  var oldText = document.getElementById('TIME');
+			  oldText.parentNode.removeChild(oldText);
+			}
+			//dat.GUI.dom.removeChild(gui.domElement);
+			dat.GUI.toggleHide();
+
 		}
 		
         render();
