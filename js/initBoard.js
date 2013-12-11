@@ -231,7 +231,7 @@ function animate() {
 		
 		//restart
         if(restartGame === 1  && (animationFlag === 0 || animationFlag === 2)){
-                /*
+                
                 if (gameid !== "None")
                 {
                     jsonobj = getGame('https://10.11.18.65/cg/chess/' + gameid);
@@ -240,7 +240,7 @@ function animate() {
 					updateMoveHTML();
 					updateTime();
                 }
-                */
+                
                 count = computerSpeed;
 				serverPull = 200;
 				if(startException === 1)
