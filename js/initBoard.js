@@ -72,7 +72,7 @@ function init(modelKind) {
 		board = object;
 		chessBoard.add( board );
 	} );
-	
+	changeBG(currentBG);
 	initWhite(modelKind);
 	initBlack(modelKind);
 	initBoardArray();

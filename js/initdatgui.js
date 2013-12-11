@@ -124,8 +124,8 @@ themeListener.onChange(function(value)
 var bgListener = optionsGUI.add(Options, 'backGround').options( 'plain1','plain2','plain3', 'kittens', 'cat', "spaceCat", 'moarCat', 'planetCat');
 bgListener.onChange(function(value)
 {
- 
- changeBG (value); 
+ currentBG = value;
+ changeBG(currentBG); 
 
 });
 
