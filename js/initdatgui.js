@@ -4,7 +4,8 @@ var player =0;
 var guiView = function() {
             this.mouseControl = function(){
                     mousemove = !mousemove;
-                    console.log('Mouse Loc x: ' + camera.position.x + 'y: '+  camera.position.y + 'z: ' +camera.position.z);
+                    
+ 
                     };
             this.topView = function() {
                 //camera = new THREE.PerspectiveCamera( 20, window.innerWidth / window.innerHeight, 1, 1000 );
@@ -40,6 +41,7 @@ var guiView = function() {
           };
 var guiOptions = function() {
                 this.theme = 'default';
+                this.bg = 'default';
                 this.gameId = 'None';
                 this.start = function(){
 
@@ -115,6 +117,11 @@ themeListener.onChange(function(value)
   restartGame = 1;
   //count = 500;
 });
+var bgListener = optionsGUI.add(Options, 'bg').options( 'plain','kittens', 'cat', "spaceCat", 'moarCat', 'planetCat');
+bgListener.onChange(function(value)
+{
+ changeBG (value); 
+});
 
 optionsGUI.add(Options, 'restart');
 
@@ -143,3 +150,9 @@ cameraGUI.add(view, 'flipPlayer');
 initOptions.open();
 optionsGUI.open();
 cameraGUI.open();
+
+function changeBG (name) {
+  container.style.background="#D0D0CD url(./objects/"+name + ".jpg) no-repeat"; 
+  container.style.backgroundSize="100% 100%"
+                    
+}
