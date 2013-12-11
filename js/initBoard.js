@@ -12,23 +12,25 @@ function init(modelKind) {
 		document.addEventListener( 'mousemove', onDocumentMouseMove, false );
 		window.addEventListener( 'resize', onWindowResize, false );
 		window.addEventListener('keypress', function (e) {
-                    if (e.keyCode==16) {
-                    	console.log('x: ' + camera.position.x + 'y: '+  camera.position.y + 'z: ' +camera.position.x);
+           console.log(e.keyCode);
+                    if (e.keyCode==122) {
+                        //pressing the z button turns on camera controls.
+                    	
                         mousemove = !mousemove;
+                        
                     				}
 
                                                 }, false); 
         camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 1000 );
-    //    camera = new THREE.OrthographicCamera( window.innerWidth / - 2, window.innerWidth / 2, window.innerHeight / 2, window.innerHeight / - 2, 1, 1000  );
         camera.position.z = 50;
         camera.position.y = 120;
 
 	}
-	container = document.createElement( 'div' );
-	container.setAttribute("id", "boardcontainer");
-	document.body.appendChild( container );
- 	
-
+    container = document.createElement( 'div' );
+    container.setAttribute("id", "boardcontainer");
+    document.body.appendChild( container );
+    if (modelKind != 'gameover')
+    {
 	// scene
 
 	scene = new THREE.Scene();
@@ -70,13 +72,21 @@ function init(modelKind) {
 	
 	scene.add( chessBoard );
 
-	renderer = new THREE.WebGLRenderer();
-	renderer.setSize( window.innerWidth, window.innerHeight );
-	container.appendChild( renderer.domElement );
-	controls = new THREE.OrbitControls(camera, renderer.domElement);
 	
+	
+    }
 
+    else
+    {   
 
+        
+        container.style.background="#0000A0";
+        container.innerHTML = "<b style=text-align:center;font-size:40px;font-family:CENTURY GOTHIC> <br> <br> GREETINGS PROFESSOR <br> <br> A STRANGE GAME. <br> <br> THE ONLY WINNING MOVE IS NOT TO PLAY.</b>";
+    }
+    renderer = new THREE.WebGLRenderer();
+    renderer.setSize( window.innerWidth, window.innerHeight );
+    container.appendChild( renderer.domElement );
+    controls = new THREE.OrbitControls(camera, renderer.domElement);
 }
 
 function cloneObj ( obj ) {
@@ -184,6 +194,8 @@ function animate() {
 		{
 			startGame = false;
 			buttonDisable = false;
+            updateMoveHTML();
+            updateTime();
 		}
 		
         if(restartGame === 1  && animationFlag === 0){
@@ -203,10 +215,11 @@ function animate() {
 				}
                 currentTurn = 0;
                 restartGame = 0;
-				updateMoveHTML();
-				//startGame = true;
+				
                 init(modelKind);
                 animate();
+                updateMoveHTML();
+                updateTime();
         }
 		
         render();
@@ -219,18 +232,7 @@ function render() {
         { camera.position.x += ( mouseX - camera.position.x ) * .05;
           camera.position.y += ( - mouseY - camera.position.y ) * .05;
         }
-     /*   
-     if (topview == true)
-     { console.log(top);
-     		camera.position.z+= (zinc *-1);
-     		
-     		camera.position.x+= (xinc*-1);
-        	camera.position.y = (yinc*-1);
-
-        	if (camera.position.y ==125)
-        		topview = false;
-     }
-	*/
+   
 	camera.lookAt( scene.position );
 	renderer.render( scene, camera );
 

@@ -282,15 +282,23 @@ function pieceMove()
 }
 
 function updateTime(){
-	timeId = "<b> White time: " + jsonobj.whitetime +"<b>" +" &nbsp&nbsp<b style =  \"color:#000000\"> Black time: " + jsonobj.blacktime + "</b>";
+	if (jsonobj != null)
+	{
+	var timeId = "";
+	timeId = "<b>" +jsonobj.whitename + ": " + jsonobj.whitetime +"</b> &nbsp&nbsp <b style =  \"color:#000000\">" + jsonobj.blackname+ ": " +jsonobj.blacktime + "</b>";
     document.getElementById('TIME').innerHTML = timeId;
+	}
 }
 
 function updateMoveHTML(){
 	var text = "";
+	//ADD teamName = jsonbj.<teamname>;
+	if (jsonobj != null){
 	if (currentTurn %2 ==0)
 	text = "<b style = \"color:#000000\">Move: "+ currentTurn + "</b> </div>";
 	else
-	text = "<b>Move: "+ currentTurn + "</b> </div>";
+	text = "<b> &nbsp&nbsp Move: "+ currentTurn + "</b> </div>";
+	 
 	document.getElementById('MOVE').innerHTML = text;
+	}
 }

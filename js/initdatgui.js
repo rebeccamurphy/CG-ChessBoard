@@ -48,14 +48,12 @@ var guiOptions = function() {
                   if (gameid !== "None")
 				  {
 					jsonobj = getGame('https://10.11.18.65/cg/chess/' + gameid);
-                 //jsonobj = {"lastmovenumber": 17, "blacktime": 915.001665, "winner": 1, "gameover": true, "whitesturn": false, "moves": ["Pa2a4", "Pa7a6", "Pd2d4", "Pa6a5", "Qd1d2", "Pb7b6", "Qd2d3", "Pc7c6", "Qd3h7", "Pc6c5", "Qh7g8", "Pd7d6", "Qg8h8", "Pd6d5", "Qh8f8", "Pd5d4", "Qf8e8"], "whitetime": 909.452745}
-                 
+               
 					turnArray = jsonobj.moves;
 					lastTurn = jsonobj.lastmovenumber;
 					if(startException === 1)
 					{
 						restartGame = 1;
-						//count = 500;
 					}
 					else
 					{ 
@@ -66,7 +64,8 @@ var guiOptions = function() {
 					updateMoveHTML();
 					updateTime();
 				  }
-                 //document.getElementById('MOVE').innerHTML = "White Time: " + jsonobj.whitetime;
+           else 
+              console.log('Enter a Game ID');
                }
                else 
                  console.log('Wait for this game to be over, silly pants.');
@@ -92,12 +91,9 @@ controllerGameId.onFinishChange(function(value){
 
 initOptions.add(Options, 'start');
 
-
-
-
 var optionsGUI = gui.addFolder('Options');
 
-var themeListener = optionsGUI.add(Options, 'theme').options('Classic Plain', 'Classic Marble', "???");
+var themeListener = optionsGUI.add(Options, 'theme').options('Classic Plain', 'Classic Marble', "???", 'War Games');
 themeListener.onChange(function(value)
 {
   if (value == "Classic Plain")
@@ -114,6 +110,8 @@ themeListener.onChange(function(value)
   {
     modelKind = 'Faculty';
   }  
+  else if (value  == 'WarGames')
+    modelKind = 'gameover';
   restartGame = 1;
   //count = 500;
 });

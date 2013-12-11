@@ -64,16 +64,10 @@
 			
 			var jsonobj = null;
 			var buttonDisable= false;
-			/*= {"lastmovenumber": 87, "blacktime": 1108.887688, "gameover": false, "whitesturn": false, "moves": ["Pe2e4", "Pd7d6", "Pd2d4", "Ng8f6", "Nb1c3", "Pg7g6", "Bc1e3", "Bf8g7", "Qd1d2", "Pc7c6", "Pf2f3", "Pb7b5", "Ng1e2", "Nb8d7", "Be3h6", "Bg7h6", "Qd2h6", "Bc8b7", "Pa2a3", "Pe7e5", "Ke1c1", "Qd8e7", "Kc1b1", "Pa7a6", "Ne2c1", "Ke8c8", "Nc1b3", "Pe5d4", "Rd1d4", "Pc6c5", "Rd4d1", "Nd7b6", "Pg2g3", "Kc8b8", "Nb3a5", "Bb7a8", "Bf1h3", "Pd6d5", "Qh6f4", "Kb8a7", "Rh1e1", "Pd5d4", "Nc3d5", "Nb6d5", "Pe4d5", "Qe7d6", "Rd1d4", "Pc5d4", "Re1e7", "Ka7b6", "Qf4d4", "Kb6a5", "Pb2b4", "Ka5a4", "Qd4c3", "Qd6d5", "Re7a7", "Ba8b7", "Ra7b7", "Qd5c4", "Qc3f6", "Ka4a3", "Qf6a6", "Ka3b4", "Pc2c3", "Kb4c3", "Qa6a1", "Kc3d2", "Qa1b2", "Kd2d1", "Bh3f1", "Rd8d2", "Rb7d7", "Rd2d7", "Bf1c4", "Pb5c4", "Qb2h8", "Rd7d3", "Qh8a8", "Pc4c3", "Qa8a4", "Kd1e1", "Pf3f4", "Pf7f5", "Kb1c1", "Rd3d2", "Qa4a7"], "whitetime": 920.588292};*/
-			
+		
 			var gameid = "None";
 			var startGame = false; 
-			//promotion test json
-			//jsonobj = {"lastmovenumber": 12, "blacktime": 1108.887688, "gameover": false, "whitesturn": false, "moves": ["Pe2e4", "Pd7d6", "Pe4e5", "Pd6d5", "Pe5e6", "Pd5d4", "Pe6e7", "Pd4d3", "Pe7e8Q", "Pd3d2", "Qe8g8", "Pd2d1N", "Qg8c1", "Nd1d1"], "whitetime": 920.588292};
-			//if (gameid === "None")
-				//jsonobj = {"lastmovenumber": 109, "blacktime": 829.423713, "winner": 1, "gameover": true, "whitesturn": false, "moves": ["Pb2b3", "Pb7b6", "Pa2a3", "Pa7a6", "Pa3a4", "Pe7e6", "Bc1b2", "Pa6a5", "Pc2c4", "Qd8h4", "Pe2e3", "Pf7f5", "Bb2c3", "Pc7c6", "Qd1f3", "Pd7d6", "Pd2d3", "Ph7h6", "Pe3e4", "Ph6h5", "Pe4e5", "Pd6e5", "Bc3e5", "Nb8d7", "Qf3c6", "Bf8b4", "Ke1e2", "Qh4g4", "Pf2f3", "Qg4h4", "Pg2g3", "Qh4e7", "Qc6a8", "Ke8d8", "Pd3d4", "Nd7e5", "Pc4c5", "Qe7c7", "Pc5b6", "Qc7c2", "Ke2e3", "Qc2c1", "Ke3f2", "Qc1b2", "Kf2e3", "Qb2a1", "Pb6b7", "Pf5f4", "Pg3f4", "Bb4d2", "Ke3e2", "Ng8e7", "Pf4e5", "Kd8d7", "Nb1d2", "Ne7c6", "Pb7c8Q", "Rh8c8", "Qa8b7", "Rc8c7", "Qb7b6", "Nc6d4", "Ke2e3", "Qa1c3", "Bf1d3", "Nd4f5", "Ke3e2", "Rc7c6", "Qb6a7", "Rc6c7", "Qa7b8", "Qc3e5", "Bd3e4", "Kd7e7", "Nd2c4", "Qe5c5", "Ke2e1", "Nf5d4", "Ng1e2", "Rc7c8", "Qb8b7", "Rc8c7", "Qb7b8", "Rc7c8", "Qb8b7", "Rc8c7", "Qb7b8", "Rc7c8", "Qb8b7", "Rc8c7", "Qb7b8", "Nd4e2", "Ke1e2", "Rc7d7", "Nc4e5", "Rd7c7", "Ne5g6", "Ke7f7", "Rh1c1", "Qc5d6", "Rc1c7", "Kf7f6", "Rc7f7", "Kf6f7", "Qb8d6", "Kf7g8", "Qd6f8", "Kg8f8", "Ng6f8"], "whitetime": 779.20756};
-			//lastTurn = jsonobj.lastmovenumber;
-			//turnArray = jsonobj.moves;
+			
 			var serverPull = 200;
 
 			var turnArray = [];
@@ -108,17 +102,13 @@
 			var windowHalfX = window.innerWidth / 2;
 			var windowHalfY = window.innerHeight / 2;
 			
-			var topview = false; 
-			var xinc =0, yinc =0, zinc =0;
+			
 
 			var controls = null;
-			var timeId = "";
+			var WG = false;
 
 			window.onload =function(){
 			init(modelKind); 
-			//document.getElementById('GameOptions').appendChild(guiGame.domElement);
-			//document.getElementById('Camera').appendChild(guiCamera.domElement);
-			
 
 			animate();
 
@@ -131,6 +121,6 @@
 
 	</body>
 	<div id = 'MOVE'> <b>Move:  </b>  </div>
-	<div id = "TIME" ><b> White time: </b> &nbsp&nbsp <b style =  "color:#000000"> Black time: </b></div>
+	<div id = "TIME" ><b> White Team: </b> &nbsp&nbsp <b style =  "color:#000000"> Black Team: </b></div>
 	
 </html>
