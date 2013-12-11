@@ -73,7 +73,7 @@ var guiOptions = function() {
                }
          this.restart = function(){
                  restartGame = 1;
-        count = computerSpeed;
+         count = computerSpeed;
          initOptions.close();
          //currentTurn = 0;
                }

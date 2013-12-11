@@ -47,7 +47,14 @@ function init(modelKind) {
     pointLight2.position.set( -100, 250, -25 ).normalize();
     scene.add( pointLight2 );
     
-	
+    if (modelKind == 'Faculty')
+    {
+    
+    var directionalLight2 = new THREE.DirectionalLight( 0xffffff, 0.25 );
+    directionalLight2.position.set( 0, 0, 50 );
+    scene.add( directionalLight2 );
+	}
+
     var spotLight = new THREE.SpotLight( 0xffffff );
         spotLight.position.set( 100, 1000, 100 );
 
