@@ -50,6 +50,9 @@
 		<script src="js/jsonparse.js"></script>
 		
 		<script>
+		/*
+			Lines 56-75 initiate all the variable that control the board pieces and movement. 
+		*/
 			var container, stats;
 
 			var camera, scene, renderer;
@@ -61,59 +64,60 @@
 			var blackQueen, blackKing, blackBishop1, blackBishop2, blackKnight1, blackKnight2, blackRook1, blackRook2;
 			var blackPawn1, blackPawn2, blackPawn3, blackPawn4, blackPawn5, blackPawn6, blackPawn7, blackPawn8;
 			
-			var jsonobj = null;
-			var buttonDisable= false;
-		
-			var gameid = "None";
-			var startGame = false; 
-			
-			var serverPull = 200;
-			var computerSpeed = 1200;
-
 			var turnArray = [];
 
-            
-			var modelKind = 'Plain';
-			
-			var currentBG = 'plain1';
-			
-			var count = computerSpeed;
-			var animationFlag = 0;
-			var animateCount = 0;
-			
-			//change this to change speed
-			var animationFrames = 26;
-			var deltaAnimation = animationFrames; // the change to be adjusted by the slider
-			var animationFramesChange = 0;
-			
-			var restartGame = 0;
-			var startException = 0;
-			
 			var moveXtransition = 0;
 			var moveZtransition = 0;
 			var currentPieceExternal;
 			var boardArray;
 
+			/*
+				Lines 77- 91 initiate variable used by datgui. 
+			*/
+
+			var jsonobj = null;
+			var buttonDisable= false;
+			var gameid = "None";
+			var startGame = false; 
+			var modelKind = 'Plain';
+			var currentBG = 'plain1';	
+			var count = computerSpeed;
+			var animationFlag = 0;
+			var animateCount = 0;
+			var serverPull = 200;
+			var computerSpeed = 1200;
+			var restartGame = 0;
+			var startException = 0;
+			
+			/*	
+				Lines 95-100 inialize variables used for animation. 
+			*/
+			//change this to change speed
+			var animationFrames = 26;
+			var deltaAnimation = animationFrames; // the change to be adjusted by the slider
+			var animationFramesChange = 0;
 			var currentTurn = 0;
 			
-			
+			/*
+				Lines 104-110 initialze variables to control the camera with the mouse and z.
+			*/
+
 			var mouseX = 0, mouseY = 0;
 			var mousemove = false;
 			var windowHalfX = window.innerWidth / 2;
 			var windowHalfY = window.innerHeight / 2;
-			
-			
-
 			var controls = null;
+
+			/*
+				var instructions is the text that appears when you first load the game. var firstLoad keeps track if the instructions should be loaded. 
+			*/
 			var instructions = "<b id = instructText><i style=font-size:12px;> Camera Controls: Scroll to zoom, click and drag to move camera, z to make the camera follow cursor. Changing the theme after starting the game will automatically restart the game.  </i> </b>";
 			var firstLoad = true;
 
+			//Initiates the board with the default model kind once the window loads. 
 			window.onload =function(){
 			init(modelKind); 
-
 			animate();
-
-
 			};
            	
 
