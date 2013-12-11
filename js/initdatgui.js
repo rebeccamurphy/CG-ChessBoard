@@ -73,7 +73,7 @@ var guiOptions = function() {
                }
          this.restart = function(){
                  restartGame = 1;
-				 //count = 400;
+				 count = computerSpeed;
 				 //currentTurn = 0;
                }
          this.animationSpeed = 26;
@@ -119,7 +119,7 @@ themeListener.onChange(function(value)
 	//note: this does break the game. Originally not intentional, though improved to be.
   }
   restartGame = 1;
-  //count = 500;
+  count = computerSpeed;
 });
 var bgListener = optionsGUI.add(Options, 'backGround').options( 'plain1','plain2','plain3', 'kittens', 'cat', "spaceCat", 'moarCat', 'planetCat');
 bgListener.onChange(function(value)
