@@ -282,7 +282,7 @@ function pieceMove()
 }
 
 function updateTime(){
-	if (jsonobj != null)
+	if (jsonobj != null && jsonobj.hasOwnProperty(whitename) && jsonobj.hasOwnProperty(blackname))
 	{
 	var timeId = "";
 	timeId = "<b>" +jsonobj.whitename + ": " + jsonobj.whitetime +"</b> &nbsp&nbsp <b style =  \"color:#000000\">" + jsonobj.blackname+ ": " +jsonobj.blacktime + "</b>";
@@ -297,7 +297,7 @@ function updateMoveHTML(){
 	if (currentTurn %2 ==0)
 	text = "<b style = \"color:#000000\">Move: "+ currentTurn + "</b> </div>";
 	else
-	text = "<b> &nbsp&nbsp Move: "+ currentTurn + "</b> </div>";
+	text = "<b>Move: "+ currentTurn + "</b> </div>";
 	 
 	document.getElementById('MOVE').innerHTML = text;
 	}

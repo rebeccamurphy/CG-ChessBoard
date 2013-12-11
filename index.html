@@ -50,7 +50,6 @@
 		<script src="js/jsonparse.js"></script>
 		<!--<div id= "GameOptions" style="float: left;" ></div>-->
 		
-		
 		<script>
 			var container, stats;
 
@@ -106,7 +105,8 @@
 			
 
 			var controls = null;
-			var WG = false;
+			var instructions = "<b><i style=font-size:12px;> Camera Controls: Scroll to zoom, click and drag to move camera, z to make the camera follow cursor. Changing the theme after starting the game will automatically restart the game.  </i> </b>";
+			var firstLoad = true;
 
 			window.onload =function(){
 			init(modelKind); 

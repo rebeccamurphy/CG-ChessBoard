@@ -117,7 +117,7 @@ themeListener.onChange(function(value)
   restartGame = 1;
   //count = 500;
 });
-var bgListener = optionsGUI.add(Options, 'bg').options( 'plain','kittens', 'cat', "spaceCat", 'moarCat', 'planetCat');
+var bgListener = optionsGUI.add(Options, 'bg').options( 'plain1','plain2','plain3', 'kittens', 'cat', "spaceCat", 'moarCat', 'planetCat');
 bgListener.onChange(function(value)
 {
  changeBG (value); 
@@ -128,17 +128,13 @@ optionsGUI.add(Options, 'restart');
 var controller = optionsGUI.add(Options, 'evenSpeed', 2, 50).step(2);
 
 controller.onFinishChange(function(value){
-  if(value % 2 === 0)
+  if(value % 2 !== 0)
   {
-    animationFramesChange = 1;
-    //alert(deltaAnimation);
-    deltaAnimation = 52 - value;
-    //alert(deltaAnimation);
+    value+=1;
   }
-  else
-  {
-    console.log("must be even. Wish I could put this somewhere you would notice...");
-  }
+  animationFramesChange = 1;
+  deltaAnimation = 52 - value;
+    
 });
 
 var cameraGUI = gui.addFolder('Camera Controls');
@@ -146,13 +142,21 @@ var cameraGUI = gui.addFolder('Camera Controls');
 cameraGUI.add(view, 'topView');
 cameraGUI.add(view, 'mouseControl');
 cameraGUI.add(view, 'flipPlayer');
-
+/*
 initOptions.open();
 optionsGUI.open();
 cameraGUI.open();
-
+*/
+gui.close();
 function changeBG (name) {
-  container.style.background="#D0D0CD url(./objects/"+name + ".jpg) no-repeat"; 
+  container.style.background="#D0D0CD url(./objects/bgs/"+name + ".jpg) no-repeat"; 
   container.style.backgroundSize="100% 100%"
                     
+}
+function openAllControls()
+{
+  gui.open();
+  initOptions.open();
+  optionsGUI.open();
+  cameraGUI.open();
 }

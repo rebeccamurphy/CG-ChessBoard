@@ -1,11 +1,12 @@
-var secondload = false;
+
 function init(modelKind) {
 	//these if-else are for reloading the board with a different texture. 
 	if (document.getElementById('boardcontainer') !=null)
 	{
   		var olddiv = document.getElementById('boardcontainer');
   		olddiv.parentNode.removeChild(olddiv);
-  		secondload = true;
+  		
+         openAllControls();
 	}
 	else
 	{
@@ -78,10 +79,13 @@ function init(modelKind) {
 
     else
     {   
-
-        
         container.style.background="#0000A0";
         container.innerHTML = "<b style=text-align:center;font-size:40px;font-family:CENTURY GOTHIC> <br> <br> GREETINGS PROFESSOR <br> <br> A STRANGE GAME. <br> <br> THE ONLY WINNING MOVE IS NOT TO PLAY.</b>";
+    }
+    if (firstLoad ==true)
+    {
+    container.innerHTML = instructions;
+    firstLoad = false;
     }
     renderer = new THREE.WebGLRenderer();
     renderer.setSize( window.innerWidth, window.innerHeight );
