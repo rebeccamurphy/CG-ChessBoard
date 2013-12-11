@@ -140,7 +140,7 @@ function animate() {
                 }
                 count -= 10;
                 //update the json pulled from the server here, and the array, and the last turn number.
-                
+                //check if an animation is ready
                 if(animationFlag === 1)
                 {
                         if(animateCount < animationFrames / 2) //rise
@@ -176,6 +176,7 @@ function animate() {
 
         } 
 		
+		//pull from the server
 		if(gameid !== "None" && startGame === true && animationFlag === 0 && restartGame === 0)
 		{
 			if(serverPull === 0)
@@ -190,6 +191,7 @@ function animate() {
 			serverPull -= 10;
 		}
         
+		//check if the game is over. (have to be sure)
 		if(gameid !== "None" && startGame === true && jsonobj.gameover === true && currentTurn === lastTurn && animationFlag === 0)
 		{
 			startGame = false;
@@ -198,6 +200,7 @@ function animate() {
             updateTime();
 		}
 		
+		//restart
         if(restartGame === 1  && animationFlag === 0){
                 
                 if (gameid !== "None")
