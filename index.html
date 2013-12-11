@@ -36,32 +36,47 @@
 			var camera, scene, renderer;
 			var chessBoard;
 			
+			//pieces for later 3DObjects
 			var whiteQueen, whiteKing, whiteBishop1, whiteBishop2, whiteKnight1, whiteKnight2, whiteRook1, whiteRook2;
 			var whitePawn1, whitePawn2, whitePawn3, whitePawn4, whitePawn5, whitePawn6, whitePawn7, whitePawn8;
 			
 			var blackQueen, blackKing, blackBishop1, blackBishop2, blackKnight1, blackKnight2, blackRook1, blackRook2;
 			var blackPawn1, blackPawn2, blackPawn3, blackPawn4, blackPawn5, blackPawn6, blackPawn7, blackPawn8;
 			
+			//the json that will get passed all around
 			var jsonobj = null;
+			
+			//disables start when pressed, re-enabled when a game ends
 			var buttonDisable= false;
 		
+			//game id
 			var gameid = "None";
+			
+			//tell if the game is currently active
 			var startGame = false; 
 			
+			//time count for pulling the json from the server
 			var serverPull = 200;
+			
+			//computerSpeed for reloading. Affected by datGUI
 			var computerSpeed = 1200;
-
+			
+			//array of turns
 			var turnArray = [];
 
-            //if (gameid != "None")
-			//	jsonobj = getGame('https://10.11.18.65/cg/chess/' + gameid);
-
+			//models to use, plain being the default
 			var modelKind = 'Plain';
 			
+			//background var for when initializing and when changing the backgound
 			var currentBG = 'plain1';
+			
+			//War Games Check for datGUI
 			var wgCheck = 0;
 			
+			//count to check
 			var count = computerSpeed;
+			
+			//animated flags for animating all of the things
 			var animationFlag = 0;
 			var animateCount = 0;
 			
@@ -70,14 +85,19 @@
 			var deltaAnimation = animationFrames; // the change to be adjusted by the slider
 			var animationFramesChange = 0;
 			
+			//restart flag, for restarting the game
 			var restartGame = 0;
 			var startException = 0;
 			
+			//animation stuff
 			var moveXtransition = 0;
 			var moveZtransition = 0;
 			var currentPieceExternal;
+			
+			//board location array
 			var boardArray;
-
+			
+			//current turn tracker for animation
 			var currentTurn = 0;
 			
 			
