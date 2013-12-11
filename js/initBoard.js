@@ -203,25 +203,25 @@ function animate() {
 		{
 			if(jsonobj.winner == 1)
 			{
-				if(jsonobj.hasOwnProperty('whitename'))
-				{
-					alert(jsonobj.whitename + " wins!");
-				}
-				else
-				{
+				// if(jsonobj.hasOwnProperty('whitename'))
+				// {
+					// alert(jsonobj.whitename + " wins!");
+				// }
+				// else
+				// {
 					alert("White Team wins!");
-				}
+				// }
 			}
 			else
 			{
-				if(jsonobj.hasOwnProperty('blackname'))
-				{
-					alert(jsonobj.blackname + " wins!");
-				}
-				else
-				{
-					alert("White Team wins!");
-				}
+				// if(jsonobj.hasOwnProperty('blackname'))
+				// {
+					// alert(jsonobj.blackname + " wins!");
+				// }
+				// else
+				// {
+					alert("Black Team wins!");
+				// }
 		}
 			startGame = false;
 			buttonDisable = false;
