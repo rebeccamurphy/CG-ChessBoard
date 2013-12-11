@@ -36,7 +36,7 @@ var guiView = function() {
           };
 var guiOptions = function() {
                 this.theme = 'default';
-                this.background = 'default';
+                this.backGround = 'default';
                 this.gameId = 'None';
                 this.start = function(){
 
@@ -76,7 +76,8 @@ var guiOptions = function() {
 				 //count = 400;
 				 //currentTurn = 0;
                }
-         this.evenSpeed = 26;
+         this.animationSpeed = 26;
+		 this.computerSpeed = 'default';
 }
 var Options = new guiOptions();
 var view = new guiView();
@@ -116,7 +117,7 @@ themeListener.onChange(function(value)
   restartGame = 1;
   //count = 500;
 });
-var bgListener = optionsGUI.add(Options, 'background').options( 'plain1','plain2','plain3', 'kittens', 'cat', "spaceCat", 'moarCat', 'planetCat');
+var bgListener = optionsGUI.add(Options, 'backGround').options( 'plain1','plain2','plain3', 'kittens', 'cat', "spaceCat", 'moarCat', 'planetCat');
 bgListener.onChange(function(value)
 {
  
@@ -126,7 +127,7 @@ bgListener.onChange(function(value)
 
 optionsGUI.add(Options, 'restart');
 
-var controller = optionsGUI.add(Options, 'evenSpeed', 2, 50).step(2);
+var controller = optionsGUI.add(Options, 'animationSpeed', 2, 50).step(2);
 
 controller.onFinishChange(function(value){
   if(value % 2 !== 0)
@@ -137,6 +138,25 @@ controller.onFinishChange(function(value){
   deltaAnimation = 52 - value;
     
 });
+
+var compControl = optionsGUI.add(Options, 'computerSpeed').options('Slow', 'Slower', 'Basically a Rock');
+compControl.onChange(function(value)
+{
+  if (value == 'Slow')
+    {
+		computerSpeed = 600;
+    }
+  else if (value == 'Slower')
+    {
+		computerSpeed = 900;
+    }
+  else if (value == 'Basically a Rock')
+  {
+		computerSpeed = 1200;
+  }  
+});
+
+
 
 var cameraGUI = gui.addFolder('Camera Controls');
 

@@ -204,6 +204,28 @@ function animate() {
 		//check if the game is over. (have to be sure)
 		if(gameid !== "None" && startGame === true && jsonobj.gameover === true && currentTurn === lastTurn && animationFlag === 0)
 		{
+			if(jsonobj.winner == 1)
+			{
+				if(jsonobj.hasOwnProperty('whitename'))
+				{
+					alert(jsonobj.whitename + " wins!");
+				}
+				else
+				{
+					alert("White Team wins!");
+				}
+			}
+			else
+			{
+				if(jsonobj.hasOwnProperty('blackname'))
+				{
+					alert(jsonobj.blackname + " wins!");
+				}
+				else
+				{
+					alert("White Team wins!");
+				}
+			}
 			startGame = false;
 			buttonDisable = false;
             updateMoveHTML();

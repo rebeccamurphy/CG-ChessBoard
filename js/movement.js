@@ -288,6 +288,12 @@ function updateTime(){
 	timeId = "<b>" +jsonobj.whitename + ": " + jsonobj.whitetime +"</b> &nbsp&nbsp <b style =  \"color:#000000\">" + jsonobj.blackname+ ": " +jsonobj.blacktime + "</b>";
     document.getElementById('TIME').innerHTML = timeId;
 	}
+	else
+	{
+	var timeId = "";
+	timeId = "<b>White Team: " + jsonobj.whitetime +"</b> &nbsp&nbsp <b style =  \"color:#000000\">Black Team: " +jsonobj.blacktime + "</b>";
+    document.getElementById('TIME').innerHTML = timeId;
+	}
 }
 
 function updateMoveHTML(){
