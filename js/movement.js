@@ -180,7 +180,7 @@ function pieceMove()
 			initPieces(pieceObjString, xToMove, -40, currentPiece);
 			scene.add(currentPiece);
 		}
-		else
+		else //black
 		{
 			switch(newPieceChar)
 			{
