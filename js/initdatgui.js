@@ -46,23 +46,25 @@ var guiOptions = function() {
                 if (buttonDisable === false)
                 {
                   if (gameid !== "None")
-                  jsonobj = getGame('https://10.11.18.65/cg/chess/' + gameid);
+				  {
+					jsonobj = getGame('https://10.11.18.65/cg/chess/' + gameid);
                  //jsonobj = {"lastmovenumber": 17, "blacktime": 915.001665, "winner": 1, "gameover": true, "whitesturn": false, "moves": ["Pa2a4", "Pa7a6", "Pd2d4", "Pa6a5", "Qd1d2", "Pb7b6", "Qd2d3", "Pc7c6", "Qd3h7", "Pc6c5", "Qh7g8", "Pd7d6", "Qg8h8", "Pd6d5", "Qh8f8", "Pd5d4", "Qf8e8"], "whitetime": 909.452745}
                  
-                 turnArray = jsonobj.moves;
-                 lastTurn = jsonobj.lastmovenumber;
-				 if(startException === 1)
-				 {
-					restartGame = 1;
-					count = 400;
-				}
-				else
-				{ 
-					startGame = true;
-                }
-				 buttonDisable = true;
-                 updateMoveHTML();
-                 updateTime();
+					turnArray = jsonobj.moves;
+					lastTurn = jsonobj.lastmovenumber;
+					if(startException === 1)
+					{
+						restartGame = 1;
+						//count = 500;
+					}
+					else
+					{ 
+						startGame = true;
+					}
+					buttonDisable = true;
+					updateMoveHTML();
+					updateTime();
+				  }
                  //document.getElementById('MOVE').innerHTML = "White Time: " + jsonobj.whitetime;
                }
                else 
@@ -70,7 +72,8 @@ var guiOptions = function() {
                }
          this.restart = function(){
                  restartGame = 1;
-				 count = 400;
+				 //count = 400;
+				 //currentTurn = 0;
                }
          this.evenSpeed = 26;
 }
@@ -111,7 +114,7 @@ themeListener.onChange(function(value)
     modelKind = 'Faculty';
   }  
   restartGame = 1;
-  count = 400;
+  //count = 500;
 });
 
 optionsGUI.add(Options, 'restart');
