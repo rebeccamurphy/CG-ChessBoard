@@ -274,8 +274,11 @@ function animate() {
 			  oldText.parentNode.removeChild(oldText);
 			}
 			//dat.GUI.dom.removeChild(gui.domElement);
-			dat.GUI.toggleHide();
-
+			if(wgCheck === 0)
+			{
+				dat.GUI.toggleHide();
+				wgCheck = 1;
+			}
 		}
 		
         render();
