@@ -45,7 +45,7 @@ var guiOptions = function() {
                   initOptions.close();
                   optionsGUI.open();
                   cameraGUI.open();
-                  container.innerHTML = "";
+                  removeInstructions();
                   if (gameid !== "None")
 				          {
 					         jsonobj = getGame('https://10.11.18.65/cg/chess/' + gameid);
@@ -150,11 +150,7 @@ cameraGUI.open();
 */
 gui.close();
 function changeBG (name) {
-   if (document.getElementById('instructText') != null) 
-    {
-      var oldText = document.getElementById('instructText');
-      oldText.parentNode.removeChild(oldText);
-    }
+   removeInstructions();
   container.style.background="#D0D0CD url(./objects/bgs/"+name + ".jpg) no-repeat"; 
   container.style.backgroundSize="100% 100%"
 
@@ -166,4 +162,12 @@ function openAllControls()
   initOptions.open();
   optionsGUI.open();
   cameraGUI.open();
+}
+function removeInstructions() {
+ if (document.getElementById('instructText') != null) 
+    {
+      var oldText = document.getElementById('instructText');
+      oldText.parentNode.removeChild(oldText);
+    }
+
 }
