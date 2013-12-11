@@ -13,17 +13,12 @@ var guiView = function() {
               // if (topview==false)
                {
                 console.log(camera);
-                //camera.fov = 20;
+              
                 console.log(camera.fov);
                 camera.position.y=150;
                 camera.position.z = 0;
                 camera.position.x = 0;
-                //xinc = camera.position.x /1000;
-                //zinc = camera.position.x / 1000;
-                //yinc = (camera.position.z -125)/1000;
-                console.log('x: ' + camera.position.x + ' y: '+  camera.position.y + ' z: ' +camera.position.z);
-                //camera.position.x = -2;
-                //topview = true;
+               
                 mousemove = false;
 
               }
@@ -41,15 +36,19 @@ var guiView = function() {
           };
 var guiOptions = function() {
                 this.theme = 'default';
-                this.bg = 'default';
+                this.background = 'default';
                 this.gameId = 'None';
                 this.start = function(){
 
                 if (buttonDisable === false)
-                {
+                { 
+                  initOptions.close();
+                  optionsGUI.open();
+                  cameraGUI.open();
+                  container.innerHTML = "";
                   if (gameid !== "None")
-				  {
-					jsonobj = getGame('https://10.11.18.65/cg/chess/' + gameid);
+				          {
+					         jsonobj = getGame('https://10.11.18.65/cg/chess/' + gameid);
                
 					turnArray = jsonobj.moves;
 					lastTurn = jsonobj.lastmovenumber;
@@ -117,10 +116,12 @@ themeListener.onChange(function(value)
   restartGame = 1;
   //count = 500;
 });
-var bgListener = optionsGUI.add(Options, 'bg').options( 'plain1','plain2','plain3', 'kittens', 'cat', "spaceCat", 'moarCat', 'planetCat');
+var bgListener = optionsGUI.add(Options, 'background').options( 'plain1','plain2','plain3', 'kittens', 'cat', "spaceCat", 'moarCat', 'planetCat');
 bgListener.onChange(function(value)
 {
+ 
  changeBG (value); 
+
 });
 
 optionsGUI.add(Options, 'restart');
@@ -149,8 +150,14 @@ cameraGUI.open();
 */
 gui.close();
 function changeBG (name) {
+   if (document.getElementById('instructText') != null) 
+    {
+      var oldText = document.getElementById('instructText');
+      oldText.parentNode.removeChild(oldText);
+    }
   container.style.background="#D0D0CD url(./objects/bgs/"+name + ".jpg) no-repeat"; 
   container.style.backgroundSize="100% 100%"
+
                     
 }
 function openAllControls()
