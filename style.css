@@ -1,0 +1,26 @@
+#boardcontainer
+{
+    background: #D0D0CD url(./objects/bgs/plain1.jpg) no-repeat;
+    background-size:100% 100%;
+}
+body 
+{
+				font-family: Monospace;
+				background-color:#94B8B8;
+				color: #fff;
+				margin: 0px;
+				overflow: hidden;
+				font-size:20px;
+}
+#info 
+{
+				color: #fff;
+				position: absolute;
+				top: 10px;
+				width: 100%;
+				text-align: center;
+				z-index: 100;
+				display:block;
+}
+
+#info a, .button { color: #f00; font-weight: bold; text-decoration: underline; cursor: pointer }
