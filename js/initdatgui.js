@@ -43,8 +43,9 @@ var guiOptions = function() {
                   removeInstructions();
                   if (gameid !== "None")
                   {
-                   jsonobj = getGame('https://10.11.18.65/cg/chess/' + gameid);
-               
+                   //jsonobj = getGame('https://10.11.18.65/cg/chess/' + gameid); Johnson's server is no longer up. 
+                   console.log(gameid);
+                    jsonobj = getGame(gameid);
           turnArray = jsonobj.moves;
           lastTurn = jsonobj.lastmovenumber;
           if(startException === 1)

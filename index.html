@@ -12,6 +12,7 @@
 
 		<script src="js/Libraries/Three.js"></script>
 		<script src="js/Libraries/OrbitControls.js"></script>
+		<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 
 		<script src="js/loaders/MTLLoader.js"></script>
 		<script src="js/loaders/OBJLoader.js"></script>
@@ -28,7 +29,7 @@
 		<script src="js/whitePieces.js"></script>
 		<script src="js/blackPieces.js"></script>
 		<script src="js/movement.js"></script>
-		<script src="js/jsonparse.js"></script>
+		
 	
 		<script>
 			var container, stats;
@@ -109,7 +110,7 @@
 			
 
 			var controls = null;
-			var instructions = "<b id = instructText><i style=font-size:12px;> Camera Controls: Scroll to zoom, click and drag to move camera, z to make the camera follow cursor. Changing the theme after starting the game will automatically restart the game.  </i> </b>";
+			var instructions = "<b id = instructText><i style=font-size:12px;> Camera Controls: Scroll to zoom, click and drag to move camera, z to make the camera follow cursor. Changing the theme after starting the game will automatically restart the game. Currently the servers that were used to host games are down, so there only 5 games available to play. Enter 1-5 for the gameid. </i> </b>";
 			var firstLoad = true;
 
 			window.onload =function(){

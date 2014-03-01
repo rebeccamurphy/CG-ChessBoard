@@ -188,7 +188,8 @@ function animate() {
 		{
 			if(serverPull === 0)
 			{
-				jsonobj = getGame('https://10.11.18.65/cg/chess/' + gameid);
+				//jsonobj = getGame('https://10.11.18.65/cg/chess/' + gameid);
+				jsonobj = getGame( gameid);
 				turnArray = jsonobj.moves;
 				lastTurn = jsonobj.lastmovenumber;
 				updateMoveHTML();
@@ -234,7 +235,8 @@ function animate() {
                 
                 if (gameid !== "None")
                 {
-                    jsonobj = getGame('https://10.11.18.65/cg/chess/' + gameid);
+                    //jsonobj = getGame('https://10.11.18.65/cg/chess/' + gameid);
+                    jsonobj = getGame(gameid);
                     turnArray = jsonobj.moves;
                     lastTurn = jsonobj.lastmovenumber;
 					updateMoveHTML();
